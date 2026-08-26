@@ -36,7 +36,8 @@
 ALTER TABLE `message_material_group`
   ADD COLUMN `primary_group_id` bigint(20) NOT NULL DEFAULT '0' COMMENT 'Associated primary material group ID, 0 for non-AI-backup',
   ADD COLUMN `ai_source_lane` varchar(50) DEFAULT '' COMMENT 'Source lane code, e.g. MARKETING_DEFAULT',
-  ADD COLUMN `source_type` tinyint(4) NOT NULL DEFAULT '0' COMMENT 'Source type: 0=manual, 1=AI auto-generated';
+  ADD COLUMN `source_type` tinyint(4) NOT NULL DEFAULT '0' COMMENT 'Source type: 0=manual, 1=AI auto-generated',
+  ADD COLUMN `ai_suggest_type` varchar(50) DEFAULT NULL COMMENT 'AI suggest type from SuggestTypeEnum: GENERAL, COST_FIRST. Default COST_FIRST for AI backups';
 ```
 
 **字段说明：**
@@ -46,13 +47,14 @@ ALTER TABLE `message_material_group`
 | `primary_group_id` | bigint(20) | 0 | 关联的主素材组 ID。0 表示非 AI 备用素材组（人工创建的主素材组或手动备用组） |
 | `ai_source_lane` | varchar(50) | '' | 对应泳道编码，如 `MARKETING_DEFAULT`、`COLLECTION_CHAT` |
 | `source_type` | tinyint(4) | 0 | 0=人工创建，1=AI 自动生成 |
+| `ai_suggest_type` | varchar(50) | NULL | AI 建议类型，取 `SuggestTypeEnum` 值（`GENERAL`/`COST_FIRST`），AI 备用组默认 `COST_FIRST`，非 AI 组为 NULL |
 
 **关联关系示例：**
 
 ```
 主素材组 (id=100, source_type=0, primary_group_id=0, ai_source_lane='')
-    ├── AI备用组 (id=200, source_type=1, primary_group_id=100, ai_source_lane='MARKETING_DEFAULT')
-    └── AI备用组 (id=201, source_type=1, primary_group_id=100, ai_source_lane='COLLECTION_CHAT')
+    ├── AI备用组 (id=200, source_type=1, primary_group_id=100, ai_source_lane='MARKETING_DEFAULT', ai_suggest_type='COST_FIRST')
+    └── AI备用组 (id=201, source_type=1, primary_group_id=100, ai_source_lane='COLLECTION_CHAT', ai_suggest_type='COST_FIRST')
 ```
 
 ### 2.2 `message_material_combination` 新增字段
@@ -101,19 +103,6 @@ CREATE TABLE `ai_backup_material_update_log` (
   KEY `idx_backup_group_id` (`backup_group_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='AI backup material group update history log';
 ```
-
-**字段说明：**
-
-| 字段 | 说明 |
-|------|------|
-| `primary_group_id` | 主素材组 ID |
-| `backup_group_id` | AI 备用素材组 ID |
-| `ai_source_lane` | 泳道编码 |
-| `operate_type` | 操作类型：`CREATE`（创建）、`UPDATE`（更新 body） |
-| `trigger_source` | 触发来源：`HOOK`（埋点同步）、`MQ`（消息消费）、`JOB`（定时补偿） |
-| `before_content` | 变更前内容（JSON） |
-| `after_content` | 变更后内容（JSON） |
-| `operator` | 操作人用户名 |
 
 ---
 
@@ -202,6 +191,7 @@ private String aiBackupMinStabilityLevel;
 │          primary_group_id = 主素材组ID                                  │
 │          ai_source_lane = 泳道编码                                      │
 │          source_type = 1                                               │
+│          ai_suggest_type = COST_FIRST                                  │
 │       h. 记录操作日志（ai_backup_material_update_log）                  │
 │   2.5 MQ 消费异常 → 重试 + 记录日志，不影响其他泳道                       │
 ├─────────────────────────────────────────────────────────────────────┤
@@ -236,11 +226,11 @@ materialGroupId=100, sourceLane=COLLECTION_CHAT:
 **创建结果：**
 
 ```
-AI备用组 (id=200, primary_group_id=100, ai_source_lane='MARKETING_DEFAULT')
+AI备用组 (id=200, primary_group_id=100, ai_source_lane='MARKETING_DEFAULT', ai_suggest_type='COST_FIRST')
   ├── 组合 (id=20, primary_combination_id=10, body=最快当天到账...)
   └── 组合 (id=21, primary_combination_id=12, body=限时优惠，立即申请...)
 
-AI备用组 (id=201, primary_group_id=100, ai_source_lane='COLLECTION_CHAT')
+AI备用组 (id=201, primary_group_id=100, ai_source_lane='COLLECTION_CHAT', ai_suggest_type='COST_FIRST')
   └── 组合 (id=22, primary_combination_id=10, body=请尽快还款...)
 ```
 
@@ -383,8 +373,6 @@ whatsapp-crm-data/
   xxljob/CreateAiBackupMaterialGroupJobService.java   # 创建补偿 Job
   xxljob/RefreshAiBackupStabilityCacheJobService.java # 缓存刷新 Job
 
-whatsapp-crm-api/
-
 whatsapp-crm-mq/
   rocket/consumer/AiBackupMaterialGroupCreateConsumer.java  # MQ Consumer
 
@@ -396,10 +384,11 @@ whatsapp-crm-job/ + whatsapp-crm-job2-1-1/
 ### 10.2 修改文件
 
 ```
-MessageMaterialGroup.java              # PO 新增 3 字段
-MessageMaterialCombination.java        # PO 新增 2 字段
-MessageMaterialGroupService.java       # 接口新增 listAllForTaskSelection()
-MessageMaterialGroupServiceImpl.java   # Hook 埋点 + listAllForTaskSelection() 实现
-MessageMaterialController.java         # 新增 /listAllForTaskSelection 接口
+MessageMaterialGroup.java              # PO 新增 4 字段 (primaryGroupId, aiSourceLane, sourceType, aiSuggestType)
+MessageMaterialCombination.java        # PO 新增 2 字段 (primaryCombinationId, sourceType)
+MessageMaterialGroupService.java       # 接口不变
+MessageMaterialGroupServiceImpl.java   # Hook 埋点 + listAll(ReqDTO) 添加过滤
+MessageMaterialController.java         # 不变
 BusinessConfig.java                    # 新增 3 配置项
+ConfigConstant.java                    # 新增 2 个 MQ 常量
 ```
