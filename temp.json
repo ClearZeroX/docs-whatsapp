@@ -1,0 +1,410 @@
+[
+  {
+    "ruleCode": "OJK_REDLINE_001_COST_FIRST",
+    "ruleName": "禁止保证性、绝对化、无依据及无风险表述",
+    "sourceLane": "ALL",
+    "materialType": "BODY",
+    "suggestType": "COST_FIRST",
+    "ruleSource": "BUSINESS",
+    "ruleType": "RED_LINE",
+    "ruleContent": {
+      "zh_CN": "禁止使用无依据、保证性或绝对化表述，包括但不限于：\"可靠\"\"可信赖\"\"有保障\"\"值得信赖\"\"唯一\"\"仅此一家\"\"安全\"\"客户数据安全\"\"保证盈利\"\"200%安全\"\"零风险\"\"无风险\"。此类表述缺乏明确证据或可靠来源，具有误导性。",
+      "en_US": "Do not use unfounded, assurance, or absolute expressions, including but not limited to: \"Trusted\", \"Guaranteed\", \"Reliable\", \"The only one\", \"Safe\", \"Customer data is secure\", \"Guaranteed profit\", \"200% safe\", \"No risk\", \"Zero risk\". Such claims lack clear evidence or a credible source and are misleading.",
+      "id": "Jangan gunakan kata jaminan, absolut, atau pernyataan pasti tanpa dasar, termasuk namun tidak terbatas pada: \"Terpercaya\", \"Terjamin\", \"Dapat diandalkan\", \"Hanya satu-satunya\", \"Aman\", \"Data nasabah aman\", \"pasti untung\", \"200% aman\", \"tanpa risiko\", \"nol risiko\". Klaim tersebut tidak memiliki bukti atau sumber yang kredibel dan menyesatkan."
+    },
+    "priority": 1000,
+    "enabled": 1,
+    "operator": "admin"
+  },
+  {
+    "ruleCode": "OJK_REDLINE_002_COST_FIRST",
+    "ruleName": "禁止用'仅'修饰利率",
+    "sourceLane": "ALL",
+    "materialType": "BODY",
+    "suggestType": "COST_FIRST",
+    "ruleSource": "BUSINESS",
+    "ruleType": "RED_LINE",
+    "ruleContent": {
+      "zh_CN": "禁止用\"仅\"修饰利率，如\"利率仅为0.01%\"。",
+      "en_US": "Do not use \"only\" to modify interest rates, such as \"Interest rate of only 0.01%\".",
+      "id": "Jangan gunakan \"hanya\" untuk memodifikasi suku bunga, seperti \"Bunga hanya 0.01% saja\"."
+    },
+    "priority": 1000,
+    "enabled": 1,
+    "operator": "admin"
+  },
+  {
+    "ruleCode": "OJK_REDLINE_028_COST_FIRST",
+    "ruleName": "OJK监管声明（有则合规保留，无则不新增）",
+    "sourceLane": "ALL",
+    "materialType": "BODY",
+    "suggestType": "COST_FIRST",
+    "ruleSource": "BUSINESS",
+    "ruleType": "RED_LINE",
+    "ruleContent": {
+      "zh_CN": "OJK声明为绝对红线：1) 若原文不含任何OJK/监管/免责声明，生成内容中不得新增任何OJK或监管声明、费用构成说明、免责声明；2) 若原文包含OJK声明，则保留其原意，并规范写为\"已获得许可并受印度尼西亚金融服务管理局(OJK)监管\"，可缩写为\"…受OJK监管\"，且需横向书写、清晰可辨；3) 不得使用\"OJK认证\"\"OJK许可\"\"OJK批准\"等不规范表述，不得单独孤立使用\"OJK\"字样；4) 不得出现\"[Logo OJK]\"声明，不得仅使用或展示OJK标志。",
+      "en_US": "OJK statement is an absolute red line: 1) If the original text does NOT contain any OJK/regulatory/disclaimer statement, the generated content must NOT add any OJK statement, cost disclosure, or disclaimer; 2) If the original contains an OJK statement, preserve its intent and phrase it as \"Licensed and supervised by the Financial Services Authority (OJK)\", or abbreviate as \"...supervised by OJK\", written horizontally and legibly; 3) Do not use irregular expressions such as \"Certified by OJK\", \"Licensed by OJK\", \"Approved by OJK\", and do not use the word \"OJK\" alone; 4) Do not include a \"[Logo OJK]\" statement, and do not use or display the OJK logo alone.",
+      "id": "Pernyataan OJK adalah garis merah mutlak: 1) Jika teks asli TIDAK mengandung pernyataan OJK/regulasi/disclaimer, konten yang dihasilkan TIDAK boleh menambahkan pernyataan OJK, rincian biaya, atau disclaimer; 2) Jika teks asli mengandung pernyataan OJK, pertahankan maksudnya dan tuliskan secara benar sebagai \"Sudah berizin dan diawasi oleh Otoritas Jasa Keuangan (OJK)\", boleh disingkat menjadi \"...diawasi oleh OJK\", ditulis horizontal dan terbaca jelas; 3) Jangan gunakan pernyataan tidak teratur seperti \"Disertifikasi oleh OJK\", \"berlisensi OJK\", \"Diijinkan oleh OJK\", dan jangan gunakan kata \"OJK\" secara terpisah; 4) Jangan mencantumkan pernyataan \"[Logo OJK]\", dan jangan hanya menampilkan atau menggunakan logo OJK."
+    },
+    "priority": 1000,
+    "enabled": 1,
+    "operator": "admin"
+  },
+  {
+    "ruleCode": "OJK_REDLINE_007_COST_FIRST",
+    "ruleName": "禁止不规范时效与不切实际流程",
+    "sourceLane": "ALL",
+    "materialType": "BODY",
+    "suggestType": "COST_FIRST",
+    "ruleSource": "BUSINESS",
+    "ruleType": "RED_LINE",
+    "ruleContent": {
+      "zh_CN": "禁止使用\"仅需xx分钟即可到账\"\"15秒即到账\"等不规范时效表述；放款时效应表述为\"从15秒起放款\"。不得承诺超快速放款无需正当程序、无需数据核查(SLIK)、无需调查等不切实际流程。",
+      "en_US": "Do not use irregular time statements such as \"takes just xx minutes\" or \"15s disbursement\"; express disbursement time as \"disbursement starting from 15 seconds\". Do not promise unrealistic processes such as super-fast disbursement without due process, no data checks (e.g. SLIK), or no surveys.",
+      "id": "Jangan gunakan pernyataan waktu tidak teratur seperti \"Hanya xx menit langsung cair\" atau \"cair 15 detik\"; nyatakan waktu pencairan sebagai \"Bisa cair mulai dari 15 detik\". Jangan menjanjikan proses yang tidak realistis seperti pencairan super cepat tanpa proses wajar, tanpa pengecekan data (misalnya SLIK), atau tanpa survei."
+    },
+    "priority": 1000,
+    "enabled": 1,
+    "operator": "admin"
+  },
+  {
+    "ruleCode": "OJK_REDLINE_012_COST_FIRST",
+    "ruleName": "额度/分期表述规范",
+    "sourceLane": "ALL",
+    "materialType": "BODY",
+    "suggestType": "COST_FIRST",
+    "ruleSource": "BUSINESS",
+    "ruleType": "RED_LINE",
+    "ruleContent": {
+      "zh_CN": "贷款额度上限必须使用\"最高/高达(sampai/hingga)\"；分期期限必须使用\"最长(sampai/hingga)\"，例如\"最长可分期12个月\"。禁止使用\"可分12个月还款\"等不规范分期表述。",
+      "en_US": "Loan limit upper bounds must use \"up to (sampai/hingga)\"; installment terms must use \"up to (sampai/hingga)\", e.g. \"payable in installments up to 12 months\". Do not use irregular installment expressions such as \"can be paid in 12 monthly installments\".",
+      "id": "Batas atas limit pinjaman harus menggunakan \"sampai/hingga\"; tenor cicilan harus menggunakan \"sampai/hingga\", contoh \"Bisa dicicil sampai 12 bulan\". Jangan gunakan pernyataan cicilan tidak teratur seperti \"Bisa dicicil 12 bulan\"."
+    },
+    "priority": 1000,
+    "enabled": 1,
+    "operator": "admin"
+  },
+  {
+    "ruleCode": "OJK_REDLINE_021_COST_FIRST",
+    "ruleName": "禁止贬低竞品/模仿竞品，禁止星号隐藏信息",
+    "sourceLane": "ALL",
+    "materialType": "BODY",
+    "suggestType": "COST_FIRST",
+    "ruleSource": "BUSINESS",
+    "ruleType": "RED_LINE",
+    "ruleContent": {
+      "zh_CN": "不得贬低其他产品或模仿竞争对手的广告。星号(*)不得用于隐藏重要信息，重要信息必须清晰解释且易于获取。",
+      "en_US": "Do not disparage other products or imitate competitors' advertisements. The asterisk (*) must not be used to hide important information; important information must be clearly explained and easily accessible.",
+      "id": "Jangan menjatuhkan produk lain atau meniru iklan kompetitor. Tanda asterisk (*) tidak boleh digunakan untuk menyembunyikan informasi penting; informasi penting harus dijelaskan dengan jelas dan mudah diakses."
+    },
+    "priority": 1000,
+    "enabled": 1,
+    "operator": "admin"
+  },
+  {
+    "ruleCode": "GEN_CONS_001_COST_FIRST",
+    "ruleName": "模板变量保真（数量一致、顺序可调）",
+    "sourceLane": "ALL",
+    "materialType": "BODY",
+    "suggestType": "COST_FIRST",
+    "ruleSource": "GENERAL",
+    "ruleType": "RED_LINE",
+    "ruleContent": {
+      "zh_CN": "原文中的{{1}}、{{2}}等模板变量必须全部保留，数量必须一致，不能增删或替换为具体值；变量顺序可调整。",
+      "en_US": "All template variables like {{1}}, {{2}} must be preserved and their count must remain identical; they must not be added, removed, or replaced with concrete values. Variable order may be adjusted.",
+      "id": "Semua variabel template seperti {{1}}, {{2}} dalam teks asli harus dipertahankan dan jumlahnya harus tetap sama; tidak boleh ditambah, dihapus, atau diganti dengan nilai konkret. Urutan variabel boleh diubah."
+    },
+    "priority": 950,
+    "enabled": 1,
+    "operator": "admin"
+  },
+  {
+    "ruleCode": "GEN_CONS_004_COST_FIRST",
+    "ruleName": "字符长度严格控制在原文±10%",
+    "sourceLane": "ALL",
+    "materialType": "BODY",
+    "suggestType": "COST_FIRST",
+    "ruleSource": "GENERAL",
+    "ruleType": "RED_LINE",
+    "ruleContent": {
+      "zh_CN": "生成内容的字符长度应控制在原文的±10%范围内，超出视为不合格。",
+      "en_US": "Generated content character length must stay within ±10% of the original text; exceeding this is considered unqualified.",
+      "id": "Panjang karakter konten yang dihasilkan harus dalam rentang ±10% dari teks asli; melebihi rentang dianggap tidak memenuhi syarat."
+    },
+    "priority": 1000,
+    "enabled": 1,
+    "operator": "admin"
+  },
+  {
+    "ruleCode": "GEN_REDLINE_001_COST_FIRST",
+    "ruleName": "生成的文本内容结尾不能是空格或emoji",
+    "sourceLane": "ALL",
+    "materialType": "BODY",
+    "suggestType": "COST_FIRST",
+    "ruleSource": "GENERAL",
+    "ruleType": "RED_LINE",
+    "ruleContent": {
+      "zh_CN": "生成的文本内容结尾不能是空格，不能是表情符号。",
+      "en_US": "The generated text content must not end with a space or an emoji.",
+      "id": "Konten teks yang dihasilkan tidak boleh diakhiri dengan spasi atau emoji."
+    },
+    "priority": 940,
+    "enabled": 1,
+    "operator": "admin"
+  },
+  {
+    "ruleCode": "GEN_CONS_002_COST_FIRST",
+    "ruleName": "数字保真",
+    "sourceLane": "ALL",
+    "materialType": "BODY",
+    "suggestType": "COST_FIRST",
+    "ruleSource": "GENERAL",
+    "ruleType": "CONSTRAINT",
+    "ruleContent": {
+      "zh_CN": "原文中的数字（额度、利率、百分比、金额、期限等）必须与原内容完全一致，不能修改任何数值。",
+      "en_US": "All numbers in the original text (loan limits, interest rates, percentages, amounts, tenors) must remain identical.",
+      "id": "Semua angka dalam teks asli (limit pinjaman, suku bunga, persentase, jumlah, tenor) harus tetap identik."
+    },
+    "priority": 949,
+    "enabled": 1,
+    "operator": "admin"
+  },
+  {
+    "ruleCode": "GEN_CONS_003_COST_FIRST",
+    "ruleName": "链接URL保留",
+    "sourceLane": "ALL",
+    "materialType": "BODY",
+    "suggestType": "COST_FIRST",
+    "ruleSource": "GENERAL",
+    "ruleType": "CONSTRAINT",
+    "ruleContent": {
+      "zh_CN": "原文中包含的链接或URL必须完整保留，不能丢失、截断或变更。",
+      "en_US": "All links or URLs in the original text must be preserved completely, without loss, truncation, or modification.",
+      "id": "Semua tautan atau URL dalam teks asli harus dipertahankan sepenuhnya, tidak boleh hilang, terpotong, atau diubah."
+    },
+    "priority": 948,
+    "enabled": 1,
+    "operator": "admin"
+  },
+  {
+    "ruleCode": "GEN_CONS_005_COST_FIRST",
+    "ruleName": "emoji数量保持一致",
+    "sourceLane": "ALL",
+    "materialType": "BODY",
+    "suggestType": "COST_FIRST",
+    "ruleSource": "GENERAL",
+    "ruleType": "CONSTRAINT",
+    "ruleContent": {
+      "zh_CN": "生成内容的emoji数量应与原文保持一致，可按伪装规则替换具体emoji，但不得增减数量。",
+      "en_US": "The number of emojis must match the original. Specific emojis may be replaced per disguise rules, but the count must not increase or decrease.",
+      "id": "Jumlah emoji harus sesuai dengan aslinya. Emoji tertentu boleh diganti sesuai aturan penyamaran, tetapi jumlahnya tidak boleh bertambah atau berkurang."
+    },
+    "priority": 850,
+    "enabled": 1,
+    "operator": "admin"
+  },
+  {
+    "ruleCode": "GEN_CONS_006_COST_FIRST",
+    "ruleName": "段落结构保持一致",
+    "sourceLane": "ALL",
+    "materialType": "BODY",
+    "suggestType": "COST_FIRST",
+    "ruleSource": "GENERAL",
+    "ruleType": "CONSTRAINT",
+    "ruleContent": {
+      "zh_CN": "生成内容的段落结构和换行位置应与原文保持一致。",
+      "en_US": "Paragraph structure and line-break positions must mirror the original.",
+      "id": "Struktur paragraf dan posisi baris baru harus mencerminkan aslinya."
+    },
+    "priority": 849,
+    "enabled": 1,
+    "operator": "admin"
+  },
+  {
+    "ruleCode": "GEN_CONS_007_COST_FIRST",
+    "ruleName": "词汇变量比约束",
+    "sourceLane": "ALL",
+    "materialType": "BODY",
+    "suggestType": "COST_FIRST",
+    "ruleSource": "GENERAL",
+    "ruleType": "CONSTRAINT",
+    "ruleContent": {
+      "zh_CN": "正文词汇总数必须大于变量总数的3倍以上，确保每条消息有足够的实质内容。",
+      "en_US": "Total word count must be at least 3 times the number of variables to ensure sufficient substantive content.",
+      "id": "Jumlah total kata harus minimal 3 kali lipat jumlah variabel, memastikan konten substantif yang cukup."
+    },
+    "priority": 940,
+    "enabled": 1,
+    "operator": "admin"
+  },
+  {
+    "ruleCode": "OJK_CONS_001_COST_FIRST",
+    "ruleName": "利率/放款/申请/抵押表述规范",
+    "sourceLane": "ALL",
+    "materialType": "BODY",
+    "suggestType": "COST_FIRST",
+    "ruleSource": "BUSINESS",
+    "ruleType": "CONSTRAINT",
+    "ruleContent": {
+      "zh_CN": "利率表述使用\"起始(start/mulai dari)\"；放款时效应表述为\"从15秒起放款\"；申请流程可表述为\"申请流程简单便捷\"；放款速度可表述为\"贷款快速到账\"；抵押要求可表述为\"无需提供任何抵押担保物品\"。",
+      "en_US": "Interest rate statements use \"start from / mulai dari\"; disbursement time is expressed as \"disbursement starting from 15 seconds\"; the application process may be described as \"easy and hassle-free\"; disbursement speed may be described as \"fast loan disbursement\"; collateral requirements may be described as \"no collateral required\".",
+      "id": "Pernyataan bunga menggunakan \"mulai dari/start\"; waktu pencairan dinyatakan sebagai \"Bisa cair mulai dari 15 detik\"; proses pengajuan dapat digambarkan sebagai \"Proses mudah dan tidak ribet\"; kecepatan pencairan dapat digambarkan sebagai \"Pinjaman cepat cair\"; persyaratan jaminan dapat digambarkan sebagai \"Tanpa butuh jaminan\"."
+    },
+    "priority": 1000,
+    "enabled": 1,
+    "operator": "admin"
+  },
+  {
+    "ruleCode": "OJK_CONS_009_COST_FIRST",
+    "ruleName": "信息真实、清晰、完整、非误导",
+    "sourceLane": "ALL",
+    "materialType": "BODY",
+    "suggestType": "COST_FIRST",
+    "ruleSource": "BUSINESS",
+    "ruleType": "CONSTRAINT",
+    "ruleContent": {
+      "zh_CN": "广告信息必须准确、诚实、清晰、非误导且可证明：不得随意夸大；使用\"最多/第一/最佳/唯一\"等词须有明确证据和可信来源；研究数据须注明来源且不超过2年；过往业绩须说明不代表未来结果，利润预测须说明不确定性；不得隐瞒缺陷或只强调优点；使用大众易懂语言；须包含产品核心信息（优势、费用、风险、条款），无法全量展示时提供直达链接/二维码/联系方式（非通用主页）。",
+      "en_US": "Advertisement information must be accurate, honest, clear, non-misleading, and substantiated: do not make arbitrary claims; terms such as \"most/first/best/only\" must be supported by clear evidence and a credible source; research data must cite its source and be no more than 2 years old; past performance must be stated not to guarantee future results, and profit projections must state uncertainty; do not conceal shortcomings or highlight only the positives; use language easily understood by the public; include core product information (benefits, costs, risks, terms), and if not all information can be shown provide a direct link/QR code/contact (not a generic homepage).",
+      "id": "Informasi iklan harus akurat, jujur, jelas, tidak menyesatkan, dan dapat dibuktikan: jangan asal klaim; jika menggunakan kata seperti \"paling/pertama/terbaik/satu-satunya\" wajib disertai bukti jelas dan sumber kredibel; data riset wajib dicantumkan sumbernya dan tidak lebih dari 2 tahun; kinerja masa lalu harus dijelaskan tidak menjamin hasil masa depan dan proyeksi keuntungan wajib dijelaskan ketidakpastiannya; jangan menutupi kekurangan atau hanya menampilkan sisi positif; gunakan bahasa yang mudah dipahami masyarakat; wajib memuat informasi inti produk (manfaat, biaya, risiko, syarat), dan jika tidak semua bisa dimuat sediakan akses langsung berupa link/QR code/kontak (bukan homepage umum)."
+    },
+    "priority": 1000,
+    "enabled": 1,
+    "operator": "admin"
+  },
+  {
+    "ruleCode": "OJK_CONS_017_COST_FIRST",
+    "ruleName": "免费/奖品/促销披露",
+    "sourceLane": "ALL",
+    "materialType": "BODY",
+    "suggestType": "COST_FIRST",
+    "ruleSource": "BUSINESS",
+    "ruleType": "CONSTRAINT",
+    "ruleContent": {
+      "zh_CN": "只有消费者确实无需做任何事或支付任何费用时才能使用\"免费\"，否则应表述为赠品或促销；如有奖品或返现，须说明领取方式、清晰条款与周期，不得只写\"售完即止\"而省略细节；广告不得只突出奖品而不说明主要产品，产品必须仍是重点。",
+      "en_US": "The word \"free\" may only be used when the consumer truly needs to do nothing and pay nothing; otherwise express it as a gift or promotion. If there are prizes or cashback, explain how to claim them and state clear terms and period; do not only write \"while stocks last\" without details. Advertisements must not highlight only the prize without explaining the main product; the product must remain the focus.",
+      "id": "Kata \"gratis\" hanya boleh digunakan jika konsumen benar-benar tidak perlu melakukan apa pun atau membayar apa pun; jika tidak, nyatakan sebagai hadiah atau promo. Jika ada hadiah atau cashback, jelaskan cara mendapatkannya serta syarat dan periodenya; jangan hanya menulis \"selama persediaan masih ada\" tanpa detail. Iklan tidak boleh hanya menonjolkan hadiah tanpa menjelaskan produk utama; produk harus tetap menjadi fokus."
+    },
+    "priority": 1000,
+    "enabled": 1,
+    "operator": "admin"
+  },
+  {
+    "ruleCode": "OJK_CONS_018_COST_FIRST",
+    "ruleName": "条件性披露：评价/多产品/清真",
+    "sourceLane": "ALL",
+    "materialType": "BODY",
+    "suggestType": "COST_FIRST",
+    "ruleSource": "BUSINESS",
+    "ruleType": "CONSTRAINT",
+    "ruleContent": {
+      "zh_CN": "仅当原文涉及以下要素时遵守：用户评价必须来自真实经历并有据可依，付费合作须标明推广；同时提供多种产品时须分别清晰说明，不得当作单一产品夸大；只有产品确实符合伊斯兰教法时才可宣称清真。",
+      "en_US": "Apply only when the original text involves these elements: testimonials must come from real experiences and be substantiated, and paid cooperation must be labeled as promotion; when offering multiple products at once, each must be clearly explained and not presented as a single over-benefited product; halal claims are allowed only if the product truly meets Sharia requirements.",
+      "id": "Terapkan hanya jika teks asli memuat elemen berikut: testimoni harus berasal dari pengalaman nyata dan dapat dibuktikan, dan kerja sama berbayar harus dijelaskan sebagai promosi; jika menawarkan beberapa produk sekaligus, masing-masing harus dijelaskan dengan jelas dan tidak boleh dibuat seolah satu produk dengan manfaat berlebihan; klaim halal hanya boleh jika produk benar-benar memenuhi ketentuan syariah."
+    },
+    "priority": 1000,
+    "enabled": 1,
+    "operator": "admin"
+  },
+  {
+    "ruleCode": "OJK_CONS_023_COST_FIRST",
+    "ruleName": "Rupiah Cepat名称保留",
+    "sourceLane": "ALL",
+    "materialType": "BODY",
+    "suggestType": "COST_FIRST",
+    "ruleSource": "BUSINESS",
+    "ruleType": "CONSTRAINT",
+    "ruleContent": {
+      "zh_CN": "必须保留\"Rupiah Cepat\"名称；若素材包含标志/logo（非纯文本），标志须按规范展示。",
+      "en_US": "The name \"Rupiah Cepat\" must be retained; if the material contains a logo (non-text), the logo must be displayed in a compliant manner.",
+      "id": "Nama \"Rupiah Cepat\" wajib dipertahankan; jika materi memuat logo (bukan teks murni), logo harus ditampilkan sesuai ketentuan."
+    },
+    "priority": 1000,
+    "enabled": 1,
+    "operator": "admin"
+  },
+  {
+    "ruleCode": "AI_CONS_001_COST_FIRST",
+    "ruleName": "风险词伪装为中性词",
+    "sourceLane": "CUSTOMER_NEW",
+    "materialType": "BODY",
+    "suggestType": "COST_FIRST",
+    "ruleSource": "AI_SUMMARY",
+    "ruleType": "CONSTRAINT",
+    "ruleContent": {
+      "zh_CN": "将'Dapatkan/Sekarang/Cepat/Promo/Kesempatan'等营销行动词伪装为'tersedia/status/konfigurasi'等系统中性词。",
+      "en_US": "Disguise marketing action words like 'Get/Now/Fast/Promo/Opportunity' as neutral system words like 'available/status/configuration'.",
+      "id": "Samarkan kata pemasaran seperti 'Dapatkan/Sekarang/Cepat/Promo/Kesempatan' menjadi kata sistem netral seperti 'tersedia/status/konfigurasi'."
+    },
+    "priority": 800,
+    "enabled": 1,
+    "operator": "admin"
+  },
+  {
+    "ruleCode": "AI_CONS_002_COST_FIRST",
+    "ruleName": "表情符号优先使用中性通知类",
+    "sourceLane": "CUSTOMER_NEW",
+    "materialType": "BODY",
+    "suggestType": "COST_FIRST",
+    "ruleSource": "AI_SUMMARY",
+    "ruleType": "CONSTRAINT",
+    "ruleContent": {
+      "zh_CN": "优先使用📢✅⚠️等中性通知表情，避免使用😍🎉🤑等情绪类表情符号。",
+      "en_US": "Prefer neutral notification emojis like 📢✅⚠️. Avoid emotional emojis like 😍🎉🤑.",
+      "id": "Utamakan emoji notifikasi netral seperti 📢✅⚠️. Hindari emoji emosional seperti 😍🎉🤑."
+    },
+    "priority": 799,
+    "enabled": 1,
+    "operator": "admin"
+  },
+  {
+    "ruleCode": "AI_SUGG_000_COST_FIRST",
+    "ruleName": "营销伪装整体策略指南",
+    "sourceLane": "CUSTOMER_NEW",
+    "materialType": "BODY",
+    "suggestType": "COST_FIRST",
+    "ruleSource": "AI_SUMMARY",
+    "ruleType": "SUGGESTION",
+    "ruleContent": {
+      "zh_CN": "将营销文案伪装成系统通知。策略：1)用'系统检测到/已为您准备'替代'快来领取'；2)用'状态通知/额度提醒'替代'促销活动'；3)保留核心利益点（额度、利率、时效）但用陈述句表述；4)按钮文案改为'查看状态/了解详情'但仍导向转化页面。",
+      "en_US": "Disguise marketing copy as a system notification. Strategy: 1) Use 'System detected/Prepared for you' instead of 'Come get it'; 2) Use 'Status notification/Limit reminder' instead of 'Promotion'; 3) Keep core benefits (limit, rate, speed) in declarative form; 4) Button text changed to 'View status/Details' but still link to the conversion page.",
+      "id": "Samarkan teks pemasaran sebagai notifikasi sistem. Strategi: 1) Gunakan 'Sistem mendeteksi/Telah disiapkan' alih-alih 'Ayo dapatkan'; 2) Gunakan 'Notifikasi status/Pengingat limit' alih-alih 'Promo'; 3) Pertahankan manfaat inti (limit, suku bunga, kecepatan) dalam bentuk deklaratif; 4) Teks tombol diubah menjadi 'Lihat status/Detail' namun tetap mengarah ke halaman konversi."
+    },
+    "priority": 900,
+    "enabled": 1,
+    "operator": "admin"
+  },
+  {
+    "ruleCode": "AI_SUGG_001_COST_FIRST",
+    "ruleName": "推荐使用系统事务性词汇",
+    "sourceLane": "CUSTOMER_NEW",
+    "materialType": "BODY",
+    "suggestType": "COST_FIRST",
+    "ruleSource": "AI_SUMMARY",
+    "ruleType": "SUGGESTION",
+    "ruleContent": {
+      "zh_CN": "推荐使用'Sistem/Otomatis/Status/Log/Konfigurasi'等系统事务性词汇，增加官方通知感知。",
+      "en_US": "Use system transactional words like 'System/Automatic/Status/Log/Configuration' to increase the sense of an official notification.",
+      "id": "Gunakan kata transaksional sistem seperti 'Sistem/Otomatis/Status/Log/Konfigurasi' untuk meningkatkan kesan notifikasi resmi."
+    },
+    "priority": 850,
+    "enabled": 1,
+    "operator": "admin"
+  },
+  {
+    "ruleCode": "AI_SUGG_003_COST_FIRST",
+    "ruleName": "使用陈述句隐含行动号召",
+    "sourceLane": "CUSTOMER_NEW",
+    "materialType": "BODY",
+    "suggestType": "COST_FIRST",
+    "ruleSource": "AI_SUMMARY",
+    "ruleType": "SUGGESTION",
+    "ruleContent": {
+      "zh_CN": "全部使用陈述句描述客观状态，将行动号召隐含在信息告知中，禁止直接使用祈使句催促用户行动。",
+      "en_US": "Use declarative sentences describing the objective state, imply the call-to-action within the informational text, and do not use imperative sentences to urge immediate action.",
+      "id": "Gunakan kalimat deklaratif yang menggambarkan keadaan objektif. Sampaikan ajakan bertindak secara tersirat dalam teks informasi. Jangan gunakan kalimat imperatif untuk mendorong tindakan."
+    },
+    "priority": 848,
+    "enabled": 1,
+    "operator": "admin"
+  }
+]
