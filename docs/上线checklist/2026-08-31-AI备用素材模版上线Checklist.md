@@ -10,23 +10,22 @@
 
 > 建议在应用部署前完成。
 
-| # | 类型 | 内容 | 环境 | 状态 |
-|---|---|---|---|---|
-| 1.1 | ALTER | `message_material_group.name` 扩展为 `varchar(255)` | 测试 | ☐ |
+| # | 类型 | 内容                                                                             | 环境 | 状态 |
+|---|---|--------------------------------------------------------------------------------|---|---|
+| 1.1 | ALTER | `message_material_group.name` 扩展为 `varchar(138)`                               | 测试 | ☐ |
 | 1.2 | ALTER | `message_material_group` 新增 `primary_group_id`、`source_type`、`ai_suggest_type` | 测试 | ☐ |
-| 1.3 | ALTER | `message_material_combination` 新增 `primary_combination_id`、`source_type` | 测试 | ☐ |
-| 1.4 | INDEX | `message_material_combination` 新增 `idx_primary_combination_id` | 测试 | ☐ |
-| 1.5 | MODIFY | `ai_material_suggestion.status` 注释更新为 AI 备用状态语义 | 测试 | ☐ |
-| 1.6 | CREATE | 创建 `ai_backup_material_update_log` 表 | 测试 | ☐ |
-| 1.7 | 确认 | `ai_material_suggestion` 已有 `uk_client_material_seq` 唯一键和 `idx_material_id` 索引 | 测试 | ☐ |
-| 1.8 | 同步 | 将 1.1 至 1.6 在预发环境执行 | 预发 | ☐ |
-| 1.9 | 同步 | 将 1.1 至 1.6 在生产环境执行 | 生产 | ☐ |
+| 1.3 | ALTER | `message_material_combination` 新增 `primary_combination_id`、`source_type`       | 测试 | ☐ |
+| 1.4 | INDEX | `message_material_combination` 新增 `idx_primary_combination_id`                 | 测试 | ☐ |
+| 1.5 | MODIFY | `ai_material_suggestion.status` 注释更新为 AI 备用状态语义                                | 测试 | ☐ |
+| 1.6 | CREATE | 创建 `ai_backup_material_update_log` 表                                           | 测试 | ☐ |
+
+
+rule表数据删除,重建,配置
 
 SQL 脚本：
 
 ```text
 doc/sql/ai_backup_material_group.sql
-doc/sql/ai_material_suggestion.sql
 ```
 
 ---
@@ -41,14 +40,8 @@ doc/sql/ai_material_suggestion.sql
 | # | key | 建议值 | 说明 | 环境 | 状态 |
 |---|---|---|---|---|---|
 | 2.1.1 | `ai_backup.enabled` | 先 `false`，灰度打开 `true` | AI 备用素材总开关 | 测试 | ☐ |
-| 2.1.2 | `ai_backup.sync_create_enabled` | `true` | 主素材模版保存后同步创建/更新备用素材组 | 测试 | ☐ |
+| 2.1.2 | `ai_backup.sync_create_enabled` | `true` （无需配置） | 主素材模版保存后同步创建/更新备用素材组 | 测试 | ☐ |
 | 2.1.3 | `ai_backup.min_stability_level` | `B` 或按产品要求 | 发送侧可使用备用组的最低稳定性等级 | 测试 | ☐ |
-
-### 2.2 批量生成配置
-
-| # | key | 建议值 | 说明 | 环境 | 状态 |
-|---|---|---|---|---|---|
-| 2.2.1 | `ai_suggestion.batch_generate_size` | `5` | 批量生成单批条数 | 测试 | ☐ |
 
 ### 2.3 批量生成 Prompt
 
@@ -68,8 +61,8 @@ prompt.properties
 | # | key | 建议值 | 说明 | 环境 | 状态 |
 |---|---|---|---|---|---|
 | 2.4.1 | `material.group.stability.redisSwitch` | 先 `false`，验证 Job 后打开 `true` | 素材组稳定性 Redis 链路开关 | 测试 | ☐ |
-| 2.4.2 | `material.group.stability.redisRefreshDays` | `14` | 非 AI 素材组刷新时间范围 | 测试 | ☐ |
-| 2.4.3 | `material.group.stability.redisCacheMinutes` | `30` | Redis 统计缓存 TTL | 测试 | ☐ |
+| 2.4.2 | `material.group.stability.redisRefreshDays` | `14` （默认值） | 非 AI 素材组刷新时间范围 | 测试 | ☐ |
+| 2.4.3 | `material.group.stability.redisCacheMinutes` | `30`（默认值） | Redis 统计缓存 TTL | 测试 | ☐ |
 
 ### 2.5 AI 备用素材稳定性规则
 
@@ -77,44 +70,37 @@ prompt.properties
 |---|---|---|---|---|
 | 2.5.1 | `ai_backup.stability_rules` | AI 备用素材组稳定性评分规则 JSON | 测试 | ☐ |
 
-规则 JSON 示例结构：
+线上配置值：
 
 ```json
-[
-  {
-    "level": "S",
-    "condition": "#utilityPercent>=0.5&&#historyUtilityPercent>=0.5",
-    "reason": "当前可用占比${utilityPercent}，历史占比${historyUtilityPercent}，等级S"
-  },
-  {
-    "level": "A",
-    "condition": "#utilityPercent>=0.4&&#historyUtilityPercent>=0.4",
-    "reason": "当前可用占比${utilityPercent}，历史占比${historyUtilityPercent}，等级A"
-  },
-  {
-    "level": "B",
-    "condition": "#utilityPercent>=0.3",
-    "reason": "当前可用占比${utilityPercent}，等级B"
-  },
-  {
-    "level": "C",
-    "condition": "#utilityPercent>=0.2",
-    "reason": "当前可用占比${utilityPercent}，等级C"
-  },
-  {
-    "level": "D",
-    "condition": "true",
-    "reason": "通知占比偏低，${utilityPercent}，等级D"
-  }
+[   
+    {
+        "level": "S",
+        "condition": "#utilityPercent>=0.75&&#historyUtilityPercent>=0.75",
+        "reason": "当前可用占比${utilityPercent}，等级S"
+    },
+    {
+        "level": "A",
+        "condition": "#utilityPercent>=0.5&&#historyUtilityPercent>=0.5",
+        "reason": "当前可用占比${utilityPercent}，等级A"
+    },
+    {
+        "level": "B",
+        "condition": "#utilityPercent>=0.3",
+        "reason": "当前可用占比${utilityPercent}，等级B"
+    },
+    {
+        "level": "C",
+        "condition": "#utilityPercent>=0.2",
+        "reason": "当前可用占比${utilityPercent}，等级C"
+    },
+    {
+        "level": "D",
+        "condition": "true",
+        "reason": "通知占比偏低，${utilityPercent}，等级D"
+    }
 ]
 ```
-
-### 2.6 预发与生产配置同步
-
-| # | 内容 | 环境 | 状态 |
-|---|---|---|---|
-| 2.6.1 | 同步 2.1 至 2.5 配置 | 预发 | ☐ |
-| 2.6.2 | 同步 2.1 至 2.5 配置 | 生产 | ☐ |
 
 ---
 
@@ -126,7 +112,7 @@ prompt.properties
 
 | # | Job Handler | 说明 | 建议 Cron | 环境 | 状态 |
 |---|---|---|---|---|---|
-| 3.1.1 | `CreateAiBackupMaterialGroupJob` | AI 备用素材组创建补偿 | `0 */5 * * * ?` | 测试 | ☐ |
+| 3.1.1 | `CreateAiBackupMaterialGroupJob`  - 暂时不用 | AI 备用素材组创建补偿 | `0 */5 * * * ?` | 测试 | ☐ |
 | 3.1.2 | `ApplyAiBackupBodyJob` | AI 备用 body 替换补偿 | `0 */5 * * * ?` | 测试 | ☐ |
 | 3.1.3 | `RefreshMaterialGroupStabilityCacheJob` | 素材组稳定性缓存刷新 | `0 */10 * * * ?` | 测试 | ☐ |
 
@@ -134,16 +120,9 @@ prompt.properties
 
 | # | Job Handler | 说明 | 建议 Cron | 环境 | 状态 |
 |---|---|---|---|---|---|
-| 3.2.1 | `CreateAiBackupMaterialGroupJob` | AI 备用素材组创建补偿 | `0 */5 * * * ?` | 测试 | ☐ |
+| 3.2.1 | `CreateAiBackupMaterialGroupJob` - 暂时不用 | AI 备用素材组创建补偿 | `0 */5 * * * ?` | 测试 | ☐ |
 | 3.2.2 | `ApplyAiBackupBodyJob` | AI 备用 body 替换补偿 | `0 */5 * * * ?` | 测试 | ☐ |
 | 3.2.3 | `RefreshMaterialGroupStabilityCacheJob` | 素材组稳定性缓存刷新 | `0 */10 * * * ?` | 测试 | ☐ |
-
-### 3.3 预发与生产
-
-| # | 内容 | 环境 | 状态 |
-|---|---|---|---|
-| 3.3.1 | 注册并启用上述 3 个 Job | 预发 | ☐ |
-| 3.3.2 | 注册并启用上述 3 个 Job | 生产 | ☐ |
 
 ---
 
@@ -178,70 +157,6 @@ prompt.properties
 | 5.6 | 首次上线保持总开关关闭 | `ai_backup.enabled=false` | ☐ |
 | 5.7 | Redis 连接正常 | 稳定性统计依赖 StringRedisTemplate | ☐ |
 | 5.8 | LLM Agent 配置正常 | 批量 prompt 可正常调用 | ☐ |
-
----
-
-## 6. 功能验证
-
-### 6.1 AI 建议生成
-
-| # | 场景 | 预期 | 环境 | 状态 |
-|---|---|---|---|---|
-| 6.1.1 | 调用 `generate` | 生成一条建议并写库 | 测试 | ☐ |
-| 6.1.2 | 调用 `batchGenerate` 多个 body | 返回受理成功，异步生成完成 | 测试 | ☐ |
-| 6.1.3 | `batchGenerate` 传入 `status=ACCEPTED_FOR_AI_BACKUP` | 记录 `status=1` | 测试 | ☐ |
-| 6.1.4 | `batchGenerate` 传入 `status=NOT_ACCEPTED_FOR_AI_BACKUP` | 记录 `status=2` | 测试 | ☐ |
-| 6.1.5 | LLM 返回缺失某项结果 | 未匹配项写失败原因 | 测试 | ☐ |
-| 6.1.6 | 未接受项生成失败 | `status=2`，不写 `3` | 测试 | ☐ |
-
-### 6.2 素材模版保存与回填
-
-| # | 场景 | 预期 | 环境 | 状态 |
-|---|---|---|---|---|
-| 6.2.1 | 新建素材模版，body 带正确 `clientMaterialKey` | `ai_material_suggestion.material_id/material_group_id` 回填 | 测试 | ☐ |
-| 6.2.2 | 编辑素材模版，body 带正确 `clientMaterialKey` | 对应建议可更新 | 测试 | ☐ |
-| 6.2.3 | body 的 `clientMaterialKey` 缺失或错误 | backfill 日志出现 `matched none` 或 `skipped` | 测试 | ☐ |
-
-### 6.3 AI 备用素材组创建与更新
-
-| # | 场景 | 预期 | 环境 | 状态 |
-|---|---|---|---|---|
-| 6.3.1 | 无已接受 body 且无备用组 | 不创建备用组 | 测试 | ☐ |
-| 6.3.2 | 一个 body 被接受 | 创建备用组，且只同步包含该 body 的主用组合 | 测试 | ☐ |
-| 6.3.3 | 多个 body 被接受 | 同步所有被接受 body 对应组合 | 测试 | ☐ |
-| 6.3.4 | 已有备用组，取消全部接受状态 | 备用组保留，原 AI 组合停用 | 测试 | ☐ |
-| 6.3.5 | 已有备用组，部分 body 取消接受 | 未接受 body 对应备用组合停用 | 测试 | ☐ |
-| 6.3.6 | 备用组名称超长 | 正确截断且不超过 255 | 测试 | ☐ |
-| 6.3.7 | 备用泳道同步 | 与主用泳道一致 | 测试 | ☐ |
-
-### 6.4 body 替换
-
-| # | 场景 | 预期 | 环境 | 状态 |
-|---|---|---|---|---|
-| 6.4.1 | 已接受 body 生成成功 | 备用 body Mongo `element.text` 替换为 AI 内容 | 测试 | ☐ |
-| 6.4.2 | 备用组合下已有模板 | `message_template.components` 中 BODY 文本替换 | 测试 | ☐ |
-| 6.4.3 | 未接受 body | 不替换，状态保持 `2` | 测试 | ☐ |
-| 6.4.4 | 替换失败 | 建议 `status=5` | 测试 | ☐ |
-| 6.4.5 | 补偿 Job 执行 | `status in (1,5)` 的记录重试 | 测试 | ☐ |
-
-### 6.5 发送侧查询
-
-| # | 场景 | 预期 | 环境 | 状态 |
-|---|---|---|---|---|
-| 6.5.1 | 主素材组有可用备用组 | 返回备用组 ID、名称、组合 | 测试 | ☐ |
-| 6.5.2 | 稳定性低于最低等级 | 返回空 | 测试 | ☐ |
-| 6.5.3 | Redis 无稳定性缓存 | 默认 `D`，可能低于阈值返回空 | 测试 | ☐ |
-| 6.5.4 | 主素材组无备用组 | 返回空 | 测试 | ☐ |
-
-### 6.6 稳定性 Redis 链路
-
-| # | 场景 | 预期 | 环境 | 状态 |
-|---|---|---|---|---|
-| 6.6.1 | `redisSwitch=false` | 走旧实时统计逻辑 | 测试 | ☐ |
-| 6.6.2 | `redisSwitch=true`，Redis 无缓存 | 实时计算并回写 Redis | 测试 | ☐ |
-| 6.6.3 | `redisSwitch=true`，Redis 有缓存 | 列表直接读取 Redis 统计 | 测试 | ☐ |
-| 6.6.4 | `RefreshMaterialGroupStabilityCacheJob` 执行 | AI 备用组全量刷新；非 AI 组刷新最近 N 天 | 测试 | ☐ |
-| 6.6.5 | Redis key 检查 | `material_group_stability:{groupId}` 为 JSON | 测试 | ☐ |
 
 ---
 
