@@ -12,7 +12,7 @@
 # 说明：与定时任务完全同一条链路（同一个执行器、同一个模型、同样的 10 分钟超时）
 # ============================================================
 
-RUNNER="/Users/opay-20260271/code-temp/ai-md/scripts/run-daily-ai-news.py"
+RUNNER="/Users/opay-20260271/code-temp/ai-md/whatsapp_crm_docs/scripts/ai-news/run.py"
 LOG_DIR="/Users/opay-20260271/code-temp/ai-md/.dsh-news-logs"
 
 echo "=========================================="
