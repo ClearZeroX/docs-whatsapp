@@ -1,0 +1,16 @@
+# 副业周报专用的模型覆盖层（overlay patch）
+#
+# 作用：把「个人开发者副业风口周报」定时任务固定使用指定模型，而不改动 DSH App 的默认模型。
+# 原理：dsh 的 --patch 可以叠加多次，且在 profile 层之后应用，所以这里写什么就覆盖什么。
+#       provider 定义仍来自 desktop profile 的 cordis.patch.yml（Key、baseURL 自动跟随），
+#       这里只覆盖 agent-default-model 这一个条目。
+#
+# 如何换模型：把下面的 model 改成想用的 id 即可（保存即生效，无需重载 launchd）。
+#   可用模型 id 见 ~/.dsh/profiles/desktop/cordis.patch.yml，例如：
+#     deepseek-v4-pro / deepseek-v4.1-flash / on-premise/deepseek-v4.1-flash
+#     glm-5.3 / glm-5.3-flash / on-premise/glm-5.3-flash
+- id: agent-default-model
+  name: "@deepseek-ai/dsh-agent-default-model"
+  config:
+    provider: opay-gateway
+    model: deepseek-v4.1-flash
