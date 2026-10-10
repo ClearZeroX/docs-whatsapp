@@ -147,22 +147,31 @@ def out_path_for(mode, start, end):
     sub = MODE_META[mode]["subdir"]
     d = ref_day_for(mode, start, end).date()
     if mode == "daily":
-        name = "%d年%02d月%02d日.md" % (d.year, d.month, d.day)
-    elif mode == "weekly":
-        iso = d.isocalendar()
-        name = "%d年-W%02d.md" % (iso[0], iso[1])
-    else:
-        name = "%d年%02d月.md" % (d.year, d.month)
-    return os.path.join(OUT_ROOT, sub, name)
+        # 日报按月子目录存放：summary/daily/2026年10月/2026年10月09日.md
+        month = "%d年%02d月" % (d.year, d.month)
+        return os.path.join(OUT_ROOT, sub, month, "%s%02d日.md" % (month, d.day))
+    if mode == "weekly":
+        # 周报按「该 ISO 周的周一~周日」命名：20261005-20261011.md
+        # 取整个自然周而不是实际窗口，好处是同周内任何时候重跑都是同一个文件名。
+        monday = d - dt.timedelta(days=d.weekday())
+        sunday = monday + dt.timedelta(days=6)
+        return os.path.join(OUT_ROOT, sub, "%s-%s.md" % (monday.strftime("%Y%m%d"),
+                                                         sunday.strftime("%Y%m%d")))
+    return os.path.join(OUT_ROOT, sub, "%d年%02d月.md" % (d.year, d.month))
 
 
 DAILY_NAME_RE = re.compile(r"^(\d{4})年(\d{2})月(\d{2})日\.md$")
-WEEKLY_NAME_RE = re.compile(r"^(\d{4})年-W(\d{2})\.md$")
+WEEKLY_NAME_RE = re.compile(r"^(\d{4})(\d{2})(\d{2})-(\d{4})(\d{2})(\d{2})\.md$")
 MONTHLY_NAME_RE = re.compile(r"^(\d{4})年(\d{2})月\.md$")
 
 
 def _report_ref_date(name):
-    """从产物文件名解析它覆盖的日期；解析不了返回 None。"""
+    """从产物文件名解析它覆盖的日期；解析不了返回 None。
+
+    日报 → 那一天；周报 → 该 ISO 周的周一；月报 → 当月 1 号。
+    只用于「排序 / 判断先后 / 落在哪个窗口」，所以取周几不重要，单调即可。
+    """
+    name = os.path.basename(name)
     m = DAILY_NAME_RE.match(name)
     if m:
         try:
@@ -172,7 +181,7 @@ def _report_ref_date(name):
     m = WEEKLY_NAME_RE.match(name)
     if m:
         try:
-            return dt.date.fromisocalendar(int(m.group(1)), int(m.group(2)), 5)
+            return dt.date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
         except ValueError:
             return None
     m = MONTHLY_NAME_RE.match(name)
@@ -185,39 +194,65 @@ def _report_ref_date(name):
 
 
 def _names(sub):
+    """列出某类报告，返回相对 `summary/<sub>/` 的路径（含子目录，如 `2026年10月/x.md`）。
+
+    日报按月子目录存放，所以要往下走一层；周报/月报仍平铺。
+    """
     d = os.path.join(OUT_ROOT, sub)
+    out = []
     try:
-        return sorted(f for f in os.listdir(d) if f.endswith(".md"))
+        entries = os.listdir(d)
     except OSError:
         return []
+    for e in entries:
+        p = os.path.join(d, e)
+        if os.path.isdir(p):
+            try:
+                out += [e + "/" + f for f in os.listdir(p) if f.endswith(".md")]
+            except OSError:
+                pass
+        elif e.endswith(".md"):
+            out.append(e)
+    return out
+
+
+def _dated_names(sub):
+    """[(覆盖日期, 相对路径)]，按日期升序。
+
+    必须按解析出的日期排序，不能按文件名排：`2026年10月` 字典序会排在 `2026年9月` 前面。
+    """
+    items = [(d, f) for f in _names(sub) for d in [_report_ref_date(f)] if d]
+    items.sort(key=lambda x: (x[0], x[1]))
+    return items
 
 
 def related_reports(mode, start, end, outfile):
     """挑出与本次窗口相关的历史报告，供 Agent 做跨报告关联。"""
-    cur = os.path.basename(outfile)
+    cur_date = _report_ref_date(outfile)
     sd = start.astimezone(TZ).date()
     ed = (end - dt.timedelta(seconds=1)).astimezone(TZ).date()
 
     def full(sub, f):
         return os.path.join(OUT_ROOT, sub, f)
 
+    def before(sub, n):
+        """严格早于本次产物的最近 n 份（按覆盖日期比较，不按文件名）。"""
+        if cur_date is None:
+            return []
+        return [full(sub, f) for d, f in _dated_names(sub) if d < cur_date][-n:]
+
     def in_win(sub):
-        out = []
-        for f in _names(sub):
-            d = _report_ref_date(f)
-            if d and sd <= d <= ed:
-                out.append(full(sub, f))
-        return out
+        return [full(sub, f) for d, f in _dated_names(sub) if sd <= d <= ed]
 
     if mode == "daily":
         # 取最近 3 份：上一份用于「承接与延续」逐条对账，更早的用于「思考」找反复出现的模式
-        prev = [full("daily", f) for f in _names("daily") if f < cur][-3:]
+        prev = before("daily", 3)
         win = []
     elif mode == "weekly":
-        prev = [full("weekly", f) for f in _names("weekly") if f < cur][-1:]
+        prev = before("weekly", 1)
         win = in_win("daily")[-7:]
     else:
-        prev = [full("monthly", f) for f in _names("monthly") if f < cur][-1:]
+        prev = before("monthly", 1)
         win = in_win("weekly")[-5:] + in_win("daily")[-31:]
     return {"previous": prev, "in_window": win}
 
@@ -593,6 +628,8 @@ def main():
         start = end - dt.timedelta(days=1)
 
     outfile = out_path_for(mode, start, end)
+    # 日报现在落在月子目录里，提前建好，省得 Agent 自己判断父目录
+    os.makedirs(os.path.dirname(outfile), exist_ok=True)
     stamp = now().strftime("%Y%m%d-%H%M%S")
     evidence = os.path.join(LOG_DIR, "evidence-%s-%s.json" % (mode, stamp))
     prompt = build_prompt(mode, start, end, outfile, evidence)
