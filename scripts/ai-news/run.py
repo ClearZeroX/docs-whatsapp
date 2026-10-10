@@ -68,7 +68,29 @@ KILL_GRACE_SECONDS = 15
 
 # 任务提示词。改这里即可调整抓取范围、条数、输出路径与格式。
 PROMPT = """<!-- DSH_AUTOMATION_RUN:daily-ai-news -->
-执行每日 AI 行业热点新闻速览。用 curl 抓取当天及前 1-2 天的 AI 新闻，覆盖四类：(a) 重要产品发布或功能更新（OpenAI、Google、Anthropic、Microsoft、Meta、Mistral 等）；(b) 融资事件与行业并购；(c) 技术突破或重要论文；(d) 行业标准与规范动态（AI 安全框架、数据治理、内容溯源等）。注意：web_search 工具因缺少搜索凭据不可用，改用 curl 直连抓取 OpenAI/Anthropic/Google 官方博客与 RSS、TechCrunch/The Verge/SiliconANGLE/Axios 等媒体，以及 Google News RSS：https://news.google.com/rss/search?q=<query>&hl=en-US&gl=US&ceid=US%3Aen 。务必核对每条新闻的发布日期，剔除旧闻与未证实传闻。输出 5-8 条，按重要性排序，每条包含标题、一句话摘要、信息来源（媒体名 + URL），聚焦技术进展与商业动态。结尾写 2-3 句今日趋势点评。写入文件：/Users/opay-20260271/code-temp/ai-md/whatsapp_crm_docs/news/<当前年月，如 2026年10月>/<当前日期，如 2026年10月09日>.md（月目录不存在则先创建；日期取运行当天）。文件格式参考同目录下已有的 2026年10月08日.md。完成后在结果中简要列出当日条目。"""
+执行每日 AI 行业热点新闻速览，必须同时覆盖【国内】和【海外】。
+
+一、抓取方式（web_search 工具因缺少搜索凭据不可用，请用 curl 直连抓取）
+海外来源：OpenAI / Google / Anthropic / Microsoft / Meta / Mistral 官方博客与新闻页；TechCrunch、The Verge、SiliconANGLE、Axios、Reuters、Bloomberg 等媒体；Google News 英文 RSS：https://news.google.com/rss/search?q=<关键词>&hl=en-US&gl=US&ceid=US%3Aen 。
+国内来源（以下 RSS 已实测可用，直接用 curl 抓）：
+- IT之家 https://www.ithome.com/rss/
+- 量子位 https://www.qbitai.com/feed
+- 钛媒体 https://www.tmtpost.com/feed
+- 雷锋网 https://www.leiphone.com/feed
+- 新浪科技 https://rss.sina.com.cn/tech/rollnews.xml
+- Google News 中文 RSS：https://news.google.com/rss/search?q=<关键词>&hl=zh-CN&gl=CN&ceid=CN%3Azh-Hans （关键词可试：大模型、人工智能、AI 融资、AI 监管、国产芯片、具身智能、智能驾驶）
+- 政策与标准：国家网信办 https://www.cac.gov.cn/ 、工信部 https://www.miit.gov.cn/ ，以及中国信通院 / TC260 的公开报道。
+注意：机器之心、36氪、澎湃新闻的页面是 JS 渲染或返回 403，curl 抓不到，不要在上面浪费时间。
+
+二、内容要求
+1. 四类都要覆盖：(a) 重要产品发布或功能更新；(b) 融资事件与行业并购；(c) 技术突破或重要论文；(d) 行业标准与规范（AI 安全框架、数据治理、内容标识与溯源、备案与监管）。
+2. 国内与海外都要有：国内条目不少于 3 条，总输出 5-8 条。国内重点跟踪：阿里通义、百度文心、腾讯混元、字节豆包/Seed、DeepSeek、月之暗面 Kimi、智谱、MiniMax、阶跃星辰、商汤、科大讯飞、华为昇腾/盘古、寒武纪、摩尔线程等，以及具身智能（智元、宇树）与智能驾驶（萝卜快跑、小马智行、文远知行）。
+3. 每条标题前标注【国内】或【海外】。每条包含：标题、一句话摘要、信息来源（媒体名 + URL）。
+4. 务必核对发布日期，只保留当天及前 1-2 天的消息，剔除旧闻与未证实传闻；同一事件不重复计数。
+5. 按重要性排序（国内与海外混合排序，不分区），聚焦技术进展与商业动态。结尾写 2-3 句今日趋势点评，兼顾国内与海外。
+
+三、输出
+写入文件：/Users/opay-20260271/code-temp/ai-md/whatsapp_crm_docs/news/<当前年月，如 2026年10月>/<当前日期，如 2026年10月10日>.md（月目录不存在则先创建；日期取运行当天）。格式参考同目录下已有的 2026年10月09日.md；第 4 行的覆盖窗口说明请写明"覆盖国内＋海外"。完成后在结果中简要列出当日条目。"""
 
 # ==================== 以下一般不需要改动 ====================
 
