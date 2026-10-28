@@ -1,0 +1,1233 @@
+[
+  {
+    "groupId": 2000794,
+    "groupName": "newcustomer_limit_0603_ai_backup",
+    "combinations": [
+      {
+        "groupId": 2000794,
+        "groupName": "newcustomer_limit_0603_ai_backup",
+        "combinationId": 1001195,
+        "materialId": "6ad8356383d65e1a7fa4ab64",
+        "clusterId": 1,
+        "contentThemes": [
+          "LIMIT_EXPIRY"
+        ],
+        "deadlineTier": null,
+        "copyTraits": [
+          "urgency",
+          "amount_placeholder",
+          "no_deadline"
+        ]
+      },
+      {
+        "groupId": 2000794,
+        "groupName": "newcustomer_limit_0603_ai_backup",
+        "combinationId": 1001194,
+        "materialId": "6ad8356383d65e1a7fa4ab63",
+        "clusterId": 2,
+        "contentThemes": [
+          "LIMIT_EXPIRY"
+        ],
+        "deadlineTier": null,
+        "copyTraits": [
+          "urgency",
+          "scarcity",
+          "no_deadline"
+        ]
+      },
+      {
+        "groupId": 2000794,
+        "groupName": "newcustomer_limit_0603_ai_backup",
+        "combinationId": 1001193,
+        "materialId": "6ad8356383d65e1a7fa4ab62",
+        "clusterId": 3,
+        "contentThemes": [
+          "LIMIT_EXPIRY"
+        ],
+        "deadlineTier": 7,
+        "copyTraits": [
+          "urgency",
+          "hard_sell",
+          "approval_rate_claim",
+          "speed_claim",
+          "trust_claim",
+          "compliance_risk",
+          "broken_placeholder"
+        ]
+      },
+      {
+        "groupId": 2000794,
+        "groupName": "newcustomer_limit_0603_ai_backup",
+        "combinationId": 1001192,
+        "materialId": "6ad8356383d65e1a7fa4ab64",
+        "clusterId": 1,
+        "contentThemes": [
+          "LIMIT_EXPIRY"
+        ],
+        "deadlineTier": null,
+        "copyTraits": [
+          "urgency",
+          "amount_placeholder",
+          "no_deadline"
+        ]
+      },
+      {
+        "groupId": 2000794,
+        "groupName": "newcustomer_limit_0603_ai_backup",
+        "combinationId": 1001191,
+        "materialId": "6ad8356383d65e1a7fa4ab63",
+        "clusterId": 2,
+        "contentThemes": [
+          "LIMIT_EXPIRY"
+        ],
+        "deadlineTier": null,
+        "copyTraits": [
+          "urgency",
+          "scarcity",
+          "no_deadline"
+        ]
+      },
+      {
+        "groupId": 2000794,
+        "groupName": "newcustomer_limit_0603_ai_backup",
+        "combinationId": 1001190,
+        "materialId": "6ad8356383d65e1a7fa4ab64",
+        "clusterId": 1,
+        "contentThemes": [
+          "LIMIT_EXPIRY"
+        ],
+        "deadlineTier": null,
+        "copyTraits": [
+          "urgency",
+          "amount_placeholder",
+          "no_deadline"
+        ]
+      },
+      {
+        "groupId": 2000794,
+        "groupName": "newcustomer_limit_0603_ai_backup",
+        "combinationId": 1001189,
+        "materialId": "6ad8356383d65e1a7fa4ab63",
+        "clusterId": 2,
+        "contentThemes": [
+          "LIMIT_EXPIRY"
+        ],
+        "deadlineTier": null,
+        "copyTraits": [
+          "urgency",
+          "scarcity",
+          "no_deadline"
+        ]
+      },
+      {
+        "groupId": 2000794,
+        "groupName": "newcustomer_limit_0603_ai_backup",
+        "combinationId": 1001188,
+        "materialId": "6ad8356383d65e1a7fa4ab62",
+        "clusterId": 3,
+        "contentThemes": [
+          "LIMIT_EXPIRY"
+        ],
+        "deadlineTier": 7,
+        "copyTraits": [
+          "urgency",
+          "hard_sell",
+          "approval_rate_claim",
+          "speed_claim",
+          "trust_claim",
+          "compliance_risk",
+          "broken_placeholder"
+        ]
+      },
+      {
+        "groupId": 2000794,
+        "groupName": "newcustomer_limit_0603_ai_backup",
+        "combinationId": 1001187,
+        "materialId": "6ad8356383d65e1a7fa4ab62",
+        "clusterId": 3,
+        "contentThemes": [
+          "LIMIT_EXPIRY"
+        ],
+        "deadlineTier": 7,
+        "copyTraits": [
+          "urgency",
+          "hard_sell",
+          "approval_rate_claim",
+          "speed_claim",
+          "trust_claim",
+          "compliance_risk",
+          "broken_placeholder"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000793,
+    "groupName": "newregis_10_55_ai_backup",
+    "combinations": [
+      {
+        "groupId": 2000793,
+        "groupName": "newregis_10_55_ai_backup",
+        "combinationId": 1001124,
+        "materialId": "6ad741f8808437438c2ebc23",
+        "clusterId": 4,
+        "contentThemes": [
+          "FACILITY_TERMS"
+        ],
+        "deadlineTier": null,
+        "copyTraits": [
+          "facility_notice",
+          "fixed_limit_cap",
+          "speed_claim",
+          "app_redirect"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000792,
+    "groupName": "newregis_10_55",
+    "combinations": [
+      {
+        "groupId": 2000792,
+        "groupName": "newregis_10_55",
+        "combinationId": 1001123,
+        "materialId": "6ad741f8808437438c2ebc1e",
+        "clusterId": 5,
+        "contentThemes": [
+          "FACILITY_TERMS"
+        ],
+        "deadlineTier": null,
+        "copyTraits": [
+          "facility_notice",
+          "fixed_limit_cap",
+          "speed_claim",
+          "app_redirect"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000791,
+    "groupName": "newregis_10_54_ai_backup",
+    "combinations": [
+      {
+        "groupId": 2000791,
+        "groupName": "newregis_10_54_ai_backup",
+        "combinationId": 1001122,
+        "materialId": "6ad741a2b58c3822b33346eb",
+        "clusterId": 6,
+        "contentThemes": [
+          "FACILITY_TERMS"
+        ],
+        "deadlineTier": null,
+        "copyTraits": [
+          "facility_notice",
+          "fixed_limit_cap",
+          "speed_claim",
+          "app_redirect"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000790,
+    "groupName": "newregis_10_54",
+    "combinations": [
+      {
+        "groupId": 2000790,
+        "groupName": "newregis_10_54",
+        "combinationId": 1001121,
+        "materialId": "6ad741a2b58c3822b33346e6",
+        "clusterId": 7,
+        "contentThemes": [
+          "FACILITY_TERMS"
+        ],
+        "deadlineTier": null,
+        "copyTraits": [
+          "facility_notice",
+          "fixed_limit_cap",
+          "speed_claim",
+          "app_redirect"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000789,
+    "groupName": "newregis_10_53_ai_backup",
+    "combinations": [
+      {
+        "groupId": 2000789,
+        "groupName": "newregis_10_53_ai_backup",
+        "combinationId": 1001120,
+        "materialId": "6ad74158b58c3822b33346e3",
+        "clusterId": 8,
+        "contentThemes": [
+          "FACILITY_TERMS"
+        ],
+        "deadlineTier": null,
+        "copyTraits": [
+          "facility_notice",
+          "fixed_limit_cap",
+          "speed_claim",
+          "app_redirect"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000788,
+    "groupName": "newregis_10_53",
+    "combinations": [
+      {
+        "groupId": 2000788,
+        "groupName": "newregis_10_53",
+        "combinationId": 1001119,
+        "materialId": "6ad74158b58c3822b33346de",
+        "clusterId": 9,
+        "contentThemes": [
+          "FACILITY_TERMS"
+        ],
+        "deadlineTier": null,
+        "copyTraits": [
+          "facility_notice",
+          "fixed_limit_cap",
+          "speed_claim",
+          "app_redirect"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000787,
+    "groupName": "newregis_10_52_ai_backup",
+    "combinations": [
+      {
+        "groupId": 2000787,
+        "groupName": "newregis_10_52_ai_backup",
+        "combinationId": 1001118,
+        "materialId": "6ad740ff3cd2d731372e2161",
+        "clusterId": 10,
+        "contentThemes": [
+          "FACILITY_TERMS"
+        ],
+        "deadlineTier": null,
+        "copyTraits": [
+          "facility_notice",
+          "fixed_limit_cap",
+          "speed_claim",
+          "app_redirect"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000786,
+    "groupName": "newregis_10_52",
+    "combinations": [
+      {
+        "groupId": 2000786,
+        "groupName": "newregis_10_52",
+        "combinationId": 1001117,
+        "materialId": "6ad740ff3cd2d731372e215c",
+        "clusterId": 11,
+        "contentThemes": [
+          "FACILITY_TERMS"
+        ],
+        "deadlineTier": null,
+        "copyTraits": [
+          "facility_notice",
+          "fixed_limit_cap",
+          "speed_claim",
+          "app_redirect"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000785,
+    "groupName": "newregis_10_51_ai_backup",
+    "combinations": [
+      {
+        "groupId": 2000785,
+        "groupName": "newregis_10_51_ai_backup",
+        "combinationId": 1001116,
+        "materialId": "6ad73fffb58c3822b33346d5",
+        "clusterId": 12,
+        "contentThemes": [
+          "FACILITY_TERMS"
+        ],
+        "deadlineTier": null,
+        "copyTraits": [
+          "facility_notice",
+          "fixed_limit_cap",
+          "speed_claim",
+          "app_redirect"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000784,
+    "groupName": "newregis_10_51",
+    "combinations": [
+      {
+        "groupId": 2000784,
+        "groupName": "newregis_10_51",
+        "combinationId": 1001115,
+        "materialId": "6ad73fffb58c3822b33346d0",
+        "clusterId": 13,
+        "contentThemes": [
+          "FACILITY_TERMS"
+        ],
+        "deadlineTier": null,
+        "copyTraits": [
+          "facility_notice",
+          "fixed_limit_cap",
+          "speed_claim",
+          "app_redirect"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000783,
+    "groupName": "wrongreject1018_ai_backup",
+    "combinations": [
+      {
+        "groupId": 2000783,
+        "groupName": "wrongreject1018_ai_backup",
+        "combinationId": 1001114,
+        "materialId": "6ad6e8413cd2d731372e0b5e",
+        "clusterId": 14,
+        "contentThemes": [
+          "SERVICE_RECOVERY"
+        ],
+        "deadlineTier": null,
+        "copyTraits": [
+          "service_status",
+          "incident_recovery",
+          "ojk_license",
+          "apology"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000782,
+    "groupName": "wrongreject1018",
+    "combinations": [
+      {
+        "groupId": 2000782,
+        "groupName": "wrongreject1018",
+        "combinationId": 1001113,
+        "materialId": "6ad6e8413cd2d731372e0b5c",
+        "clusterId": 15,
+        "contentThemes": [
+          "SERVICE_RECOVERY"
+        ],
+        "deadlineTier": null,
+        "copyTraits": [
+          "service_status",
+          "incident_recovery",
+          "ojk_license",
+          "apology"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000781,
+    "groupName": "newregis_10_50_ai_backup",
+    "combinations": [
+      {
+        "groupId": 2000781,
+        "groupName": "newregis_10_50_ai_backup",
+        "combinationId": 1001108,
+        "materialId": "6ad583563cd2d731372c83fc",
+        "clusterId": 16,
+        "contentThemes": [
+          "TERMS_REDIRECT"
+        ],
+        "deadlineTier": null,
+        "copyTraits": [
+          "soft_notice",
+          "no_concrete_number",
+          "app_redirect"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000780,
+    "groupName": "newregis_10_50",
+    "combinations": [
+      {
+        "groupId": 2000780,
+        "groupName": "newregis_10_50",
+        "combinationId": 1001107,
+        "materialId": "6ad583563cd2d731372c83f7",
+        "clusterId": 17,
+        "contentThemes": [
+          "TERMS_REDIRECT"
+        ],
+        "deadlineTier": null,
+        "copyTraits": [
+          "soft_notice",
+          "no_concrete_number",
+          "app_redirect"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000779,
+    "groupName": "newregis_10_49_ai_backup",
+    "combinations": [
+      {
+        "groupId": 2000779,
+        "groupName": "newregis_10_49_ai_backup",
+        "combinationId": 1001106,
+        "materialId": "6ad5830a3cd2d731372c83e2",
+        "clusterId": 18,
+        "contentThemes": [
+          "TERMS_REDIRECT"
+        ],
+        "deadlineTier": null,
+        "copyTraits": [
+          "soft_notice",
+          "no_concrete_number",
+          "app_redirect"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000778,
+    "groupName": "newregis_10_49",
+    "combinations": [
+      {
+        "groupId": 2000778,
+        "groupName": "newregis_10_49",
+        "combinationId": 1001105,
+        "materialId": "6ad5830a3cd2d731372c83dd",
+        "clusterId": 19,
+        "contentThemes": [
+          "TERMS_REDIRECT"
+        ],
+        "deadlineTier": null,
+        "copyTraits": [
+          "soft_notice",
+          "no_concrete_number",
+          "app_redirect"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000777,
+    "groupName": "newregis_10_48_ai_backup",
+    "combinations": [
+      {
+        "groupId": 2000777,
+        "groupName": "newregis_10_48_ai_backup",
+        "combinationId": 1001104,
+        "materialId": "6ad582c2b58c3822b3319581",
+        "clusterId": 20,
+        "contentThemes": [
+          "TERMS_REDIRECT"
+        ],
+        "deadlineTier": null,
+        "copyTraits": [
+          "soft_notice",
+          "no_concrete_number",
+          "app_redirect"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000776,
+    "groupName": "newregis_10_48",
+    "combinations": [
+      {
+        "groupId": 2000776,
+        "groupName": "newregis_10_48",
+        "combinationId": 1001103,
+        "materialId": "6ad582c2b58c3822b331957c",
+        "clusterId": 21,
+        "contentThemes": [
+          "TERMS_REDIRECT"
+        ],
+        "deadlineTier": null,
+        "copyTraits": [
+          "soft_notice",
+          "no_concrete_number",
+          "app_redirect"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000775,
+    "groupName": "newregis_10_47_ai_backup",
+    "combinations": [
+      {
+        "groupId": 2000775,
+        "groupName": "newregis_10_47_ai_backup",
+        "combinationId": 1001102,
+        "materialId": "6ad5826d3cd2d731372c83b6",
+        "clusterId": 22,
+        "contentThemes": [
+          "TERMS_REDIRECT"
+        ],
+        "deadlineTier": null,
+        "copyTraits": [
+          "soft_notice",
+          "no_concrete_number",
+          "app_redirect"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000774,
+    "groupName": "newregis_10_47",
+    "combinations": [
+      {
+        "groupId": 2000774,
+        "groupName": "newregis_10_47",
+        "combinationId": 1001101,
+        "materialId": "6ad5826d3cd2d731372c83b1",
+        "clusterId": 23,
+        "contentThemes": [
+          "TERMS_REDIRECT"
+        ],
+        "deadlineTier": null,
+        "copyTraits": [
+          "soft_notice",
+          "no_concrete_number",
+          "app_redirect"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000773,
+    "groupName": "old_free15days_going02_2_ai_backup",
+    "combinations": [
+      {
+        "groupId": 2000773,
+        "groupName": "old_free15days_going02_2_ai_backup",
+        "combinationId": 1001100,
+        "materialId": "6ad1febb3cd2d7313729911b",
+        "clusterId": 24,
+        "contentThemes": [
+          "FREEBENEFIT_EXPIRY_15D"
+        ],
+        "deadlineTier": 15,
+        "copyTraits": [
+          "expiry_notice",
+          "auto_message"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000772,
+    "groupName": "old_free15days_going02_2",
+    "combinations": [
+      {
+        "groupId": 2000772,
+        "groupName": "old_free15days_going02_2",
+        "combinationId": 1001099,
+        "materialId": "6ad1febb3cd2d73137299118",
+        "clusterId": 24,
+        "contentThemes": [
+          "FREEBENEFIT_EXPIRY_15D"
+        ],
+        "deadlineTier": 15,
+        "copyTraits": [
+          "expiry_notice",
+          "auto_message"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000771,
+    "groupName": "old_free_10days_going02_ai_backup",
+    "combinations": [
+      {
+        "groupId": 2000771,
+        "groupName": "old_free_10days_going02_ai_backup",
+        "combinationId": 1001098,
+        "materialId": "6ad1fe4ab58c3822b32e9a33",
+        "clusterId": 25,
+        "contentThemes": [
+          "FREEBENEFIT_EXPIRY_10D"
+        ],
+        "deadlineTier": 10,
+        "copyTraits": [
+          "expiry_notice",
+          "auto_message"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000770,
+    "groupName": "old_free_10days_going02",
+    "combinations": [
+      {
+        "groupId": 2000770,
+        "groupName": "old_free_10days_going02",
+        "combinationId": 1001097,
+        "materialId": "6ad1fe4ab58c3822b32e9a30",
+        "clusterId": 25,
+        "contentThemes": [
+          "FREEBENEFIT_EXPIRY_10D"
+        ],
+        "deadlineTier": 10,
+        "copyTraits": [
+          "expiry_notice",
+          "auto_message"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000769,
+    "groupName": "old_free7days_going02_2_ai_backup",
+    "combinations": [
+      {
+        "groupId": 2000769,
+        "groupName": "old_free7days_going02_2_ai_backup",
+        "combinationId": 1001096,
+        "materialId": "6ad1fe103cd2d731372990f5",
+        "clusterId": 26,
+        "contentThemes": [
+          "FREEBENEFIT_EXPIRY_7D"
+        ],
+        "deadlineTier": 7,
+        "copyTraits": [
+          "expiry_notice",
+          "auto_message"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000768,
+    "groupName": "old_free7days_going02_2",
+    "combinations": [
+      {
+        "groupId": 2000768,
+        "groupName": "old_free7days_going02_2",
+        "combinationId": 1001095,
+        "materialId": "6ad1fe103cd2d731372990f2",
+        "clusterId": 26,
+        "contentThemes": [
+          "FREEBENEFIT_EXPIRY_7D"
+        ],
+        "deadlineTier": 7,
+        "copyTraits": [
+          "expiry_notice",
+          "auto_message"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000767,
+    "groupName": "old_free_7days_going02_ai_backup",
+    "combinations": [
+      {
+        "groupId": 2000767,
+        "groupName": "old_free_7days_going02_ai_backup",
+        "combinationId": 1001094,
+        "materialId": "6ad1fd8e808437438c2a0eb9",
+        "clusterId": 26,
+        "contentThemes": [
+          "FREEBENEFIT_EXPIRY_7D"
+        ],
+        "deadlineTier": 7,
+        "copyTraits": [
+          "expiry_notice",
+          "auto_message"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000766,
+    "groupName": "old_free_7days_going02",
+    "combinations": [
+      {
+        "groupId": 2000766,
+        "groupName": "old_free_7days_going02",
+        "combinationId": 1001093,
+        "materialId": "6ad1fd8e808437438c2a0eb6",
+        "clusterId": 26,
+        "contentThemes": [
+          "FREEBENEFIT_EXPIRY_7D"
+        ],
+        "deadlineTier": 7,
+        "copyTraits": [
+          "expiry_notice",
+          "auto_message"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000765,
+    "groupName": "old_free_5days_going02_ai_backup",
+    "combinations": [
+      {
+        "groupId": 2000765,
+        "groupName": "old_free_5days_going02_ai_backup",
+        "combinationId": 1001092,
+        "materialId": "6ad1fd413cd2d731372990bf",
+        "clusterId": 27,
+        "contentThemes": [
+          "FREEBENEFIT_EXPIRY_5D"
+        ],
+        "deadlineTier": 5,
+        "copyTraits": [
+          "expiry_notice",
+          "auto_message"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000764,
+    "groupName": "old_free_5days_going02",
+    "combinations": [
+      {
+        "groupId": 2000764,
+        "groupName": "old_free_5days_going02",
+        "combinationId": 1001091,
+        "materialId": "6ad1fd413cd2d731372990bc",
+        "clusterId": 27,
+        "contentThemes": [
+          "FREEBENEFIT_EXPIRY_5D"
+        ],
+        "deadlineTier": 5,
+        "copyTraits": [
+          "expiry_notice",
+          "auto_message"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000763,
+    "groupName": "old_free_3days_going02_ai_backup",
+    "combinations": [
+      {
+        "groupId": 2000763,
+        "groupName": "old_free_3days_going02_ai_backup",
+        "combinationId": 1001090,
+        "materialId": "6ad1fcf93cd2d731372990aa",
+        "clusterId": 28,
+        "contentThemes": [
+          "FREEBENEFIT_EXPIRY_3D"
+        ],
+        "deadlineTier": 3,
+        "copyTraits": [
+          "expiry_notice",
+          "auto_message"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000762,
+    "groupName": "old_free_3days_going02",
+    "combinations": [
+      {
+        "groupId": 2000762,
+        "groupName": "old_free_3days_going02",
+        "combinationId": 1001089,
+        "materialId": "6ad1fcf93cd2d731372990a7",
+        "clusterId": 28,
+        "contentThemes": [
+          "FREEBENEFIT_EXPIRY_3D"
+        ],
+        "deadlineTier": 3,
+        "copyTraits": [
+          "expiry_notice",
+          "auto_message"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000761,
+    "groupName": "old_free15days_going02_ai_backup",
+    "combinations": [
+      {
+        "groupId": 2000761,
+        "groupName": "old_free15days_going02_ai_backup",
+        "combinationId": 1001088,
+        "materialId": "6ad1fb86808437438c2a0e57",
+        "clusterId": 29,
+        "contentThemes": [
+          "FREEBENEFIT_EXPIRY_15D"
+        ],
+        "deadlineTier": 15,
+        "copyTraits": [
+          "expiry_notice",
+          "date_placeholder",
+          "auto_message"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000760,
+    "groupName": "old_free15days_going02",
+    "combinations": [
+      {
+        "groupId": 2000760,
+        "groupName": "old_free15days_going02",
+        "combinationId": 1001087,
+        "materialId": "6ad1fb86808437438c2a0e54",
+        "clusterId": 30,
+        "contentThemes": [
+          "FREEBENEFIT_EXPIRY_15D"
+        ],
+        "deadlineTier": 15,
+        "copyTraits": [
+          "expiry_notice",
+          "date_placeholder",
+          "auto_message"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000759,
+    "groupName": "old_free15days_have02_ai_backup",
+    "combinations": [
+      {
+        "groupId": 2000759,
+        "groupName": "old_free15days_have02_ai_backup",
+        "combinationId": 1001086,
+        "materialId": "6ad1fa7b3cd2d7313729903c",
+        "clusterId": 31,
+        "contentThemes": [
+          "FREEBENEFIT_UNUSED_15D"
+        ],
+        "deadlineTier": 15,
+        "copyTraits": [
+          "unused_notice",
+          "upper_bound_wording",
+          "auto_message"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000758,
+    "groupName": "old_free15days_have02",
+    "combinations": [
+      {
+        "groupId": 2000758,
+        "groupName": "old_free15days_have02",
+        "combinationId": 1001085,
+        "materialId": "6ad1fa7b3cd2d73137299039",
+        "clusterId": 32,
+        "contentThemes": [
+          "FREEBENEFIT_UNUSED_15D"
+        ],
+        "deadlineTier": 15,
+        "copyTraits": [
+          "unused_notice",
+          "auto_message"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000757,
+    "groupName": "old_free15days_get02_2_ai_backup",
+    "combinations": [
+      {
+        "groupId": 2000757,
+        "groupName": "old_free15days_get02_2_ai_backup",
+        "combinationId": 1001084,
+        "materialId": "6ad1fa0eb58c3822b32e9903",
+        "clusterId": 33,
+        "contentThemes": [
+          "FREEBENEFIT_GRANTED_15D"
+        ],
+        "deadlineTier": 15,
+        "copyTraits": [
+          "grant_notice",
+          "auto_message"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000756,
+    "groupName": "old_free15days_get02_2",
+    "combinations": [
+      {
+        "groupId": 2000756,
+        "groupName": "old_free15days_get02_2",
+        "combinationId": 1001083,
+        "materialId": "6ad1fa0eb58c3822b32e9900",
+        "clusterId": 33,
+        "contentThemes": [
+          "FREEBENEFIT_GRANTED_15D"
+        ],
+        "deadlineTier": 15,
+        "copyTraits": [
+          "grant_notice",
+          "auto_message"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000755,
+    "groupName": "old_free10days_going02_ai_backup",
+    "combinations": [
+      {
+        "groupId": 2000755,
+        "groupName": "old_free10days_going02_ai_backup",
+        "combinationId": 1001082,
+        "materialId": "6ad1f9903cd2d7313729900d",
+        "clusterId": 34,
+        "contentThemes": [
+          "FREEBENEFIT_UNUSED_10D"
+        ],
+        "deadlineTier": 10,
+        "copyTraits": [
+          "unused_notice",
+          "auto_message"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000754,
+    "groupName": "old_free10days_going02",
+    "combinations": [
+      {
+        "groupId": 2000754,
+        "groupName": "old_free10days_going02",
+        "combinationId": 1001081,
+        "materialId": "6ad1f9903cd2d7313729900a",
+        "clusterId": 34,
+        "contentThemes": [
+          "FREEBENEFIT_UNUSED_10D"
+        ],
+        "deadlineTier": 10,
+        "copyTraits": [
+          "unused_notice",
+          "auto_message"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000753,
+    "groupName": "old_free10days_get02_ai_backup",
+    "combinations": [
+      {
+        "groupId": 2000753,
+        "groupName": "old_free10days_get02_ai_backup",
+        "combinationId": 1001080,
+        "materialId": "6ad1f93cb58c3822b32e98b7",
+        "clusterId": 35,
+        "contentThemes": [
+          "FREEBENEFIT_GRANTED_10D"
+        ],
+        "deadlineTier": 10,
+        "copyTraits": [
+          "grant_notice",
+          "auto_message"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000752,
+    "groupName": "old_free10days_get02",
+    "combinations": [
+      {
+        "groupId": 2000752,
+        "groupName": "old_free10days_get02",
+        "combinationId": 1001079,
+        "materialId": "6ad1f93cb58c3822b32e98b4",
+        "clusterId": 35,
+        "contentThemes": [
+          "FREEBENEFIT_GRANTED_10D"
+        ],
+        "deadlineTier": 10,
+        "copyTraits": [
+          "grant_notice",
+          "auto_message"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000751,
+    "groupName": "old_free7days_going02_ai_backup",
+    "combinations": [
+      {
+        "groupId": 2000751,
+        "groupName": "old_free7days_going02_ai_backup",
+        "combinationId": 1001078,
+        "materialId": "6ad1f8bd3cd2d73137298fd8",
+        "clusterId": 36,
+        "contentThemes": [
+          "FREEBENEFIT_EXPIRY_7D"
+        ],
+        "deadlineTier": 7,
+        "copyTraits": [
+          "expiry_notice",
+          "date_placeholder",
+          "auto_message"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000750,
+    "groupName": "old_free7days_going02",
+    "combinations": [
+      {
+        "groupId": 2000750,
+        "groupName": "old_free7days_going02",
+        "combinationId": 1001077,
+        "materialId": "6ad1f8bd3cd2d73137298fd5",
+        "clusterId": 36,
+        "contentThemes": [
+          "FREEBENEFIT_EXPIRY_7D"
+        ],
+        "deadlineTier": 7,
+        "copyTraits": [
+          "expiry_notice",
+          "date_placeholder",
+          "auto_message"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000749,
+    "groupName": "old_free7days_get02_ai_backup",
+    "combinations": [
+      {
+        "groupId": 2000749,
+        "groupName": "old_free7days_get02_ai_backup",
+        "combinationId": 1001076,
+        "materialId": "6ad1f737b58c3822b32e9889",
+        "clusterId": 37,
+        "contentThemes": [
+          "FREEBENEFIT_GRANTED_7D"
+        ],
+        "deadlineTier": 7,
+        "copyTraits": [
+          "grant_notice",
+          "auto_message"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000748,
+    "groupName": "old_free7days_get02",
+    "combinations": [
+      {
+        "groupId": 2000748,
+        "groupName": "old_free7days_get02",
+        "combinationId": 1001075,
+        "materialId": "6ad1f737b58c3822b32e9886",
+        "clusterId": 37,
+        "contentThemes": [
+          "FREEBENEFIT_GRANTED_7D"
+        ],
+        "deadlineTier": 7,
+        "copyTraits": [
+          "grant_notice",
+          "auto_message"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000747,
+    "groupName": "old_free5days_going02_ai_backup",
+    "combinations": [
+      {
+        "groupId": 2000747,
+        "groupName": "old_free5days_going02_ai_backup",
+        "combinationId": 1001074,
+        "materialId": "6ad1f5a6808437438c2a0c78",
+        "clusterId": 38,
+        "contentThemes": [
+          "FREEBENEFIT_EXPIRY_5D"
+        ],
+        "deadlineTier": 5,
+        "copyTraits": [
+          "expiry_notice",
+          "date_placeholder",
+          "auto_message"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000746,
+    "groupName": "old_free5days_going02",
+    "combinations": [
+      {
+        "groupId": 2000746,
+        "groupName": "old_free5days_going02",
+        "combinationId": 1001073,
+        "materialId": "6ad1f5a6808437438c2a0c75",
+        "clusterId": 38,
+        "contentThemes": [
+          "FREEBENEFIT_EXPIRY_5D"
+        ],
+        "deadlineTier": 5,
+        "copyTraits": [
+          "expiry_notice",
+          "date_placeholder",
+          "auto_message"
+        ]
+      }
+    ]
+  },
+  {
+    "groupId": 2000745,
+    "groupName": "old_free5days_have02_ai_backup",
+    "combinations": [
+      {
+        "groupId": 2000745,
+        "groupName": "old_free5days_have02_ai_backup",
+        "combinationId": 1001072,
+        "materialId": "6ad1f544808437438c2a0c53",
+        "clusterId": 39,
+        "contentThemes": [
+          "FREEBENEFIT_UNUSED_5D"
+        ],
+        "deadlineTier": 5,
+        "copyTraits": [
+          "unused_notice",
+          "auto_message",
+          "ai_residue"
+        ]
+      }
+    ]
+  }
+]

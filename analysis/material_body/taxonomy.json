@@ -1,0 +1,107 @@
+[
+  {
+    "key": "LIMIT_EXPIRY",
+    "nameZh": "额度到期失效提醒",
+    "nameEn": "Limit expiry reminder",
+    "clusterCount": 3,
+    "combinationCount": 9
+  },
+  {
+    "key": "FREEBENEFIT_EXPIRY_15D",
+    "nameZh": "免息券到期提醒·15 天",
+    "nameEn": "Interest-free benefit expiry, 15 days",
+    "clusterCount": 3,
+    "combinationCount": 4
+  },
+  {
+    "key": "FREEBENEFIT_EXPIRY_10D",
+    "nameZh": "免息券到期提醒·10 天",
+    "nameEn": "Interest-free benefit expiry, 10 days",
+    "clusterCount": 1,
+    "combinationCount": 2
+  },
+  {
+    "key": "FREEBENEFIT_EXPIRY_7D",
+    "nameZh": "免息券到期提醒·7 天",
+    "nameEn": "Interest-free benefit expiry, 7 days",
+    "clusterCount": 2,
+    "combinationCount": 6
+  },
+  {
+    "key": "FREEBENEFIT_EXPIRY_5D",
+    "nameZh": "免息券到期提醒·5 天",
+    "nameEn": "Interest-free benefit expiry, 5 days",
+    "clusterCount": 2,
+    "combinationCount": 4
+  },
+  {
+    "key": "FREEBENEFIT_EXPIRY_3D",
+    "nameZh": "免息券到期提醒·3 天",
+    "nameEn": "Interest-free benefit expiry, 3 days",
+    "clusterCount": 1,
+    "combinationCount": 2
+  },
+  {
+    "key": "FREEBENEFIT_UNUSED_15D",
+    "nameZh": "免息券未使用提醒·15 天",
+    "nameEn": "Interest-free benefit unused, 15 days",
+    "clusterCount": 2,
+    "combinationCount": 2
+  },
+  {
+    "key": "FREEBENEFIT_UNUSED_10D",
+    "nameZh": "免息券未使用提醒·10 天",
+    "nameEn": "Interest-free benefit unused, 10 days",
+    "clusterCount": 1,
+    "combinationCount": 2
+  },
+  {
+    "key": "FREEBENEFIT_UNUSED_5D",
+    "nameZh": "免息券未使用提醒·5 天",
+    "nameEn": "Interest-free benefit unused, 5 days",
+    "clusterCount": 1,
+    "combinationCount": 1
+  },
+  {
+    "key": "FREEBENEFIT_GRANTED_15D",
+    "nameZh": "免息券已发放通知·15 天",
+    "nameEn": "Interest-free benefit granted, 15 days",
+    "clusterCount": 1,
+    "combinationCount": 2
+  },
+  {
+    "key": "FREEBENEFIT_GRANTED_10D",
+    "nameZh": "免息券已发放通知·10 天",
+    "nameEn": "Interest-free benefit granted, 10 days",
+    "clusterCount": 1,
+    "combinationCount": 2
+  },
+  {
+    "key": "FREEBENEFIT_GRANTED_7D",
+    "nameZh": "免息券已发放通知·7 天",
+    "nameEn": "Interest-free benefit granted, 7 days",
+    "clusterCount": 1,
+    "combinationCount": 2
+  },
+  {
+    "key": "FACILITY_TERMS",
+    "nameZh": "新客设施条款告知",
+    "nameEn": "New customer facility terms",
+    "clusterCount": 10,
+    "combinationCount": 10
+  },
+  {
+    "key": "TERMS_REDIRECT",
+    "nameZh": "条款引导（弱告知）",
+    "nameEn": "Terms redirect, soft notice",
+    "clusterCount": 8,
+    "combinationCount": 8
+  },
+  {
+    "key": "SERVICE_RECOVERY",
+    "nameZh": "服务恢复通知",
+    "nameEn": "Service recovery notice",
+    "clusterCount": 2,
+    "combinationCount": 2
+  }
+]

@@ -1,0 +1,91 @@
+[
+  {
+    "rule": "OJK_REDLINE_001_APPROVAL_RATE",
+    "clusters": 16,
+    "rows": 69,
+    "affectedGroups": 10,
+    "sampleClusterIds": [
+      51,
+      61,
+      68,
+      69,
+      70
+    ]
+  },
+  {
+    "rule": "OJK_REDLINE_002_GUARANTEED_APPROVAL",
+    "clusters": 0,
+    "rows": 0,
+    "affectedGroups": 0,
+    "sampleClusterIds": []
+  },
+  {
+    "rule": "OJK_REDLINE_003_INSTANT_CLAIM",
+    "clusters": 252,
+    "rows": 662,
+    "affectedGroups": 303,
+    "sampleClusterIds": [
+      0,
+      1,
+      3,
+      16,
+      20
+    ]
+  },
+  {
+    "rule": "OJK_REDLINE_004_UNVERIFIED_SUPERLATIVE",
+    "clusters": 1,
+    "rows": 2,
+    "affectedGroups": 1,
+    "sampleClusterIds": [
+      250
+    ]
+  },
+  {
+    "rule": "OJK_REDLINE_005_ABSOLUTE_SAFETY",
+    "clusters": 10,
+    "rows": 54,
+    "affectedGroups": 6,
+    "sampleClusterIds": [
+      47,
+      48,
+      51,
+      68,
+      69
+    ]
+  },
+  {
+    "rule": "OJK_REDLINE_006_NO_CONDITION",
+    "clusters": 3,
+    "rows": 39,
+    "affectedGroups": 2,
+    "sampleClusterIds": [
+      25,
+      29,
+      33
+    ]
+  },
+  {
+    "rule": "OJK_REDLINE_007_DEBT_SHAMING",
+    "clusters": 2,
+    "rows": 2,
+    "affectedGroups": 1,
+    "sampleClusterIds": [
+      809,
+      811
+    ]
+  },
+  {
+    "rule": "OJK_REDLINE_008_MISLEADING_LIMIT",
+    "clusters": 156,
+    "rows": 709,
+    "affectedGroups": 124,
+    "sampleClusterIds": [
+      0,
+      1,
+      2,
+      3,
+      8
+    ]
+  }
+]

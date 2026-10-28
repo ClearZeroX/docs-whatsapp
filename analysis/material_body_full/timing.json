@@ -1,0 +1,542 @@
+[
+  {
+    "kind": "mysql",
+    "sql": "select id, name, status, ctime, utime from message_material_group where 1=1 order by id desc limit 50;",
+    "query_time_ms": 203.075,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, name, status, ctime, utime from message_material_group where 1=1 and id < 2000745 order by id desc limit 50;",
+    "query_time_ms": 168.906,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, name, status, ctime, utime from message_material_group where 1=1 and id < 2000695 order by id desc limit 50;",
+    "query_time_ms": 166.343,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, name, status, ctime, utime from message_material_group where 1=1 and id < 2000645 order by id desc limit 50;",
+    "query_time_ms": 169.016,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, name, status, ctime, utime from message_material_group where 1=1 and id < 2000595 order by id desc limit 50;",
+    "query_time_ms": 169.904,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, name, status, ctime, utime from message_material_group where 1=1 and id < 2000545 order by id desc limit 50;",
+    "query_time_ms": 171.143,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, name, status, ctime, utime from message_material_group where 1=1 and id < 2000495 order by id desc limit 50;",
+    "query_time_ms": 170.998,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, name, status, ctime, utime from message_material_group where 1=1 and id < 2000445 order by id desc limit 50;",
+    "query_time_ms": 165.716,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, name, status, ctime, utime from message_material_group where 1=1 and id < 2000395 order by id desc limit 50;",
+    "query_time_ms": 169.464,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, name, status, ctime, utime from message_material_group where 1=1 and id < 2000345 order by id desc limit 50;",
+    "query_time_ms": 174.428,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, name, status, ctime, utime from message_material_group where 1=1 and id < 2000295 order by id desc limit 50;",
+    "query_time_ms": 165.835,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, name, status, ctime, utime from message_material_group where 1=1 and id < 2000245 order by id desc limit 50;",
+    "query_time_ms": 168.903,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, name, status, ctime, utime from message_material_group where 1=1 and id < 2000195 order by id desc limit 50;",
+    "query_time_ms": 165.629,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, name, status, ctime, utime from message_material_group where 1=1 and id < 2000145 order by id desc limit 50;",
+    "query_time_ms": 170.97,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, name, status, ctime, utime from message_material_group where 1=1 and id < 2000095 order by id desc limit 50;",
+    "query_time_ms": 175.083,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, name, status, ctime, utime from message_material_group where 1=1 and id < 1000166 order by id desc limit 50;",
+    "query_time_ms": 169.127,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, name, status, ctime, utime from message_material_group where 1=1 and id < 1000116 order by id desc limit 50;",
+    "query_time_ms": 169.978,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, name, status, ctime, utime from message_material_group where 1=1 and id < 1000066 order by id desc limit 50;",
+    "query_time_ms": 169.715,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, name, status, ctime, utime from message_material_group where 1=1 and id < 33 order by id desc limit 50;",
+    "query_time_ms": 170.404,
+    "rows": 32
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 order by id desc limit 50;",
+    "query_time_ms": 180.129,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 1001146 order by id desc limit 50;",
+    "query_time_ms": 169.585,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 1001096 order by id desc limit 50;",
+    "query_time_ms": 164.662,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 1001046 order by id desc limit 50;",
+    "query_time_ms": 171.744,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 1000996 order by id desc limit 50;",
+    "query_time_ms": 175.111,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 1000946 order by id desc limit 50;",
+    "query_time_ms": 168.772,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 1000896 order by id desc limit 50;",
+    "query_time_ms": 164.645,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 1000846 order by id desc limit 50;",
+    "query_time_ms": 166.139,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 1000796 order by id desc limit 50;",
+    "query_time_ms": 168.931,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 1000746 order by id desc limit 50;",
+    "query_time_ms": 169.577,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 1000696 order by id desc limit 50;",
+    "query_time_ms": 171.67,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 1000646 order by id desc limit 50;",
+    "query_time_ms": 167.067,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 1000596 order by id desc limit 50;",
+    "query_time_ms": 169.63,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 1000546 order by id desc limit 50;",
+    "query_time_ms": 169.484,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 1000496 order by id desc limit 50;",
+    "query_time_ms": 169.207,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 1000446 order by id desc limit 50;",
+    "query_time_ms": 164.47,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 1000396 order by id desc limit 50;",
+    "query_time_ms": 166.043,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 1000346 order by id desc limit 50;",
+    "query_time_ms": 169.442,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 1000296 order by id desc limit 50;",
+    "query_time_ms": 168.831,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 1000246 order by id desc limit 50;",
+    "query_time_ms": 171.206,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 1000196 order by id desc limit 50;",
+    "query_time_ms": 171.997,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 1000146 order by id desc limit 50;",
+    "query_time_ms": 165.579,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 1000096 order by id desc limit 50;",
+    "query_time_ms": 176.425,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 1000046 order by id desc limit 50;",
+    "query_time_ms": 170.498,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 1070 order by id desc limit 50;",
+    "query_time_ms": 169.12,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 1020 order by id desc limit 50;",
+    "query_time_ms": 167.351,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 970 order by id desc limit 50;",
+    "query_time_ms": 164.403,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 920 order by id desc limit 50;",
+    "query_time_ms": 169.473,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 870 order by id desc limit 50;",
+    "query_time_ms": 171.586,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 820 order by id desc limit 50;",
+    "query_time_ms": 165.321,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 770 order by id desc limit 50;",
+    "query_time_ms": 187.873,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 720 order by id desc limit 50;",
+    "query_time_ms": 169.282,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 670 order by id desc limit 50;",
+    "query_time_ms": 169.307,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 620 order by id desc limit 50;",
+    "query_time_ms": 169.967,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 570 order by id desc limit 50;",
+    "query_time_ms": 166.715,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 520 order by id desc limit 50;",
+    "query_time_ms": 165.878,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 470 order by id desc limit 50;",
+    "query_time_ms": 170.321,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 420 order by id desc limit 50;",
+    "query_time_ms": 169.912,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 370 order by id desc limit 50;",
+    "query_time_ms": 167.152,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 320 order by id desc limit 50;",
+    "query_time_ms": 170.044,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 270 order by id desc limit 50;",
+    "query_time_ms": 170.946,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 220 order by id desc limit 50;",
+    "query_time_ms": 167.361,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 170 order by id desc limit 50;",
+    "query_time_ms": 164.357,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 120 order by id desc limit 50;",
+    "query_time_ms": 168.902,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 70 order by id desc limit 50;",
+    "query_time_ms": 164.778,
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id, header_material_id, footer_material_id, buttons_material_id, status, ctime, utime from message_material_combination where 1=1 and id < 20 order by id desc limit 50;",
+    "query_time_ms": 164.85,
+    "rows": 19
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6ad8356383d65e1a7fa4ab64'),ObjectId('6ad8356383d65e1a7fa4ab63'),Object",
+    "query_time_ms": 49.966,
+    "rows": 50
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6ad1fd8e808437438c2a0eb9'),ObjectId('6ad1fd8e808437438c2a0eb6'),Object",
+    "query_time_ms": 41.122,
+    "rows": 50
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6ad1ebdb3cd2d731372989de'),ObjectId('6ad1ebdb3cd2d731372989db'),Object",
+    "query_time_ms": 41.569,
+    "rows": 50
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6ad033a5a543b32c25ddfa0b'),ObjectId('6ad033a5a543b32c25ddfa06'),Object",
+    "query_time_ms": 41.865,
+    "rows": 50
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6acc635cbcd1ed6b3b3b62ae'),ObjectId('6acc6308299ae33c8f453993'),Object",
+    "query_time_ms": 41.355,
+    "rows": 50
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6ac9ada9b7d7a342429648b3'),ObjectId('6ac9ada9b7d7a342429648b2'),Object",
+    "query_time_ms": 41.764,
+    "rows": 50
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6abdc033f907512ef1eca0e0'),ObjectId('6abdc033f907512ef1eca0db'),Object",
+    "query_time_ms": 48.028,
+    "rows": 50
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6ab9d7cc0316761e2aaf0d46'),ObjectId('6ab9d7810316761e2aaf0d3e'),Object",
+    "query_time_ms": 41.198,
+    "rows": 50
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6ab3533f0316761e2aa78250'),ObjectId('6ab352eff907512ef1dee319'),Object",
+    "query_time_ms": 41.61,
+    "rows": 50
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6aabb0730919330ca483032e'),ObjectId('6aabb0730919330ca483032d'),Object",
+    "query_time_ms": 41.743,
+    "rows": 50
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6aa7a61308625a4b8252193d'),ObjectId('6aa7a61308625a4b82521938'),Object",
+    "query_time_ms": 41.347,
+    "rows": 50
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6a9e1d7ece2b8f446c28d185'),ObjectId('6a9e1d2b585c2278d4460028'),Object",
+    "query_time_ms": 43.421,
+    "rows": 50
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6a910a761a348c7e0ecf5ed9'),ObjectId('6a910a326a5817198f1982ba'),Object",
+    "query_time_ms": 41.202,
+    "rows": 50
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6a8bb06b0773a01fa87be8fb'),ObjectId('6a87bb20edd4a73c436abf23'),Object",
+    "query_time_ms": 42.244,
+    "rows": 50
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6a842abe6dfd4f581db648a7'),ObjectId('6a84279857ccc53d2be205a1'),Object",
+    "query_time_ms": 41.415,
+    "rows": 50
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6a7d94feccd9c756c9ba0295'),ObjectId('6a7d94c1175e6b44a44f5235'),Object",
+    "query_time_ms": 41.032,
+    "rows": 50
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6a38f64bb80ea55cf723a862'),ObjectId('6a38f64bb80ea55cf723a861'),Object",
+    "query_time_ms": 41.126,
+    "rows": 50
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6a68924fff0b685393e618b3'),ObjectId('6a68924fff0b685393e618b2'),Object",
+    "query_time_ms": 40.792,
+    "rows": 50
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6a7bec8df5a6166c7b75a8c3'),ObjectId('6a7bec39ccd9c756c9b3dd04'),Object",
+    "query_time_ms": 42.101,
+    "rows": 50
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6a6c761b90b4ef5899954734'),ObjectId('6a6c75cb0a245635e414eaf7'),Object",
+    "query_time_ms": 47.525,
+    "rows": 50
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6a585399b7145f32d7554e7e'),ObjectId('6a5853247143285c742d01e4'),Object",
+    "query_time_ms": 41.637,
+    "rows": 50
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6a4f774b156ecf34ff0880c0'),ObjectId('6a4c61ea156ecf34fffbf2a2'),Object",
+    "query_time_ms": 41.192,
+    "rows": 50
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6a475b36aafcaa1d2e49a805'),ObjectId('6a475a21aafcaa1d2e49a6bd'),Object",
+    "query_time_ms": 44.428,
+    "rows": 50
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6a1ff6639e65a92db70eb590'),ObjectId('6a1eb697cdde1c24e91fd4aa'),Object",
+    "query_time_ms": 43.221,
+    "rows": 50
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('69a558b9d877141470ca5ed2'),ObjectId('6a0590cd3ed82b08c4ab09e8'),Object",
+    "query_time_ms": 45.198,
+    "rows": 19
+  }
+]
