@@ -58,7 +58,7 @@ TIMEOUT_SUFFIX = "-执行超时"
 # 只统计本人的代码提交（git author）
 AUTHOR = "licun.zha"
 
-MODEL_LABEL = "deepseek-v4.1-flash"
+MODEL_LABEL = "deepseek-flash"
 
 # 写进提示词开头，供采集器识别「这次会话是自动化自己跑的」，从而不计入工作内容。
 # 必须与 collect.py 里的 AUTOMATION_MARKER 保持一致。
