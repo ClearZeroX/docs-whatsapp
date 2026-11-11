@@ -38,7 +38,7 @@ SIDEHUSTLE_MODEL_PATCH = os.path.join(SCRIPT_DIR, "model.patch.yml")
 SELF_PATH = os.path.abspath(__file__)
 
 # 仅用于日志与生成文件顶部那行的显示；真正生效的模型在 model.patch.yml 里
-MODEL_LABEL = "deepseek-v4.1-flash"
+MODEL_LABEL = "deepseek-flash"
 
 # 工作目录 = 无头会话的写入边界（workspace-write 只允许写此处及系统临时目录）。
 WORKDIR = "/Users/opay-20260271/code-temp/ai-md"

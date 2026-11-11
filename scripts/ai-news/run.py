@@ -19,11 +19,11 @@ from zoneinfo import ZoneInfo
 
 # ==================== CONFIG：要改东西，基本只改这一段 ====================
 
-# 单次执行超时（秒）。当前 600 = 10 分钟（按需求设定）。
+# 单次执行超时（秒）。当前 900 = 15 分钟（按需求设定）。
 # 超时后：先 SIGTERM、等待 KILL_GRACE_SECONDS，仍未退出则 SIGKILL 整个进程组；
 # 随后把当天文档重命名为 "<名称>-执行超时.md"，脚本以退出码 124 结束。
 # 被标记后可手动重跑：双击 news/重新执行新闻任务.command
-TIMEOUT_SECONDS = 600
+TIMEOUT_SECONDS = 900
 
 # DSH 无头入口（App 包内文件；若 App 被移动/改名，这里要同步改）
 DSH_CLI = "/Applications/DeepSeek Harness.app/Contents/Resources/runtime/cli/bin/dsh"
@@ -43,7 +43,7 @@ NEWS_MODEL_PATCH = os.path.join(SCRIPT_DIR, "model.patch.yml")
 SELF_PATH = os.path.abspath(__file__)
 # 仅用于日志与生成文件顶部那行的显示；真正生效的模型在 NEWS_MODEL_PATCH 里
 # （provider 是 opay-gateway，由 model.patch.yml 指定）
-NEWS_MODEL = "deepseek-v4.1-flash"
+NEWS_MODEL = "deepseek-flash"
 # 生成文件顶部「本次使用模型」显示的名称（只显示模型 id，不带 provider 前缀）
 NEWS_MODEL_LABEL = NEWS_MODEL
 
