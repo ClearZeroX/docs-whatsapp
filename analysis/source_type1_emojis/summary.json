@@ -1,0 +1,184 @@
+{
+  "global_distinct_emoji": 38,
+  "emoji_coverage": {
+    "📢": 247,
+    "✅": 15,
+    "⚡": 6,
+    "💰": 5,
+    "🎁": 4,
+    "⚠️": 3,
+    "🔄": 3,
+    "🔥": 2,
+    "💎": 2,
+    "👀": 2,
+    "🍹": 1,
+    "🤑": 1,
+    "💳": 1,
+    "🛠️": 1,
+    "💸": 1,
+    "✨": 1,
+    "🚗": 1,
+    "📋": 1,
+    "ℹ️": 1,
+    "🔔": 1,
+    "📌": 1,
+    "💵": 1,
+    "🎉": 1,
+    "🛵": 1,
+    "🎊": 1,
+    "🏡": 1,
+    "📈": 1,
+    "✈️": 1,
+    "🍰": 1,
+    "👜": 1,
+    "🛒": 1,
+    "🍜": 1,
+    "⏰": 1,
+    "🤩": 1,
+    "💓": 1,
+    "⬆️": 1,
+    "✔️": 1,
+    "😜": 1
+  },
+  "group_distinct_emoji_hist": {
+    "0": 5,
+    "1": 232,
+    "2": 8,
+    "3": 4,
+    "4": 2,
+    "5": 1,
+    "6": 1,
+    "8": 1,
+    "30": 1
+  },
+  "group_total_emoji_hist": {
+    "0": 254,
+    "800": 1
+  },
+  "top_groups_by_total": [
+    {
+      "groupId": 2000819,
+      "groupName": "sucai_200juta_01_ai_backup",
+      "totalEmojiCount": 819,
+      "distinctEmojiCount": 30
+    },
+    {
+      "groupId": 2000862,
+      "groupName": "newcompletion_10_1_mkt_ai_backup",
+      "totalEmojiCount": 30,
+      "distinctEmojiCount": 3
+    },
+    {
+      "groupId": 2000794,
+      "groupName": "newcustomer_limit_0603_ai_backup",
+      "totalEmojiCount": 24,
+      "distinctEmojiCount": 8
+    },
+    {
+      "groupId": 2000533,
+      "groupName": "newgotlimit_09_02_ai_backup",
+      "totalEmojiCount": 20,
+      "distinctEmojiCount": 2
+    },
+    {
+      "groupId": 2000372,
+      "groupName": "yl_new_0909_ai_backup",
+      "totalEmojiCount": 16,
+      "distinctEmojiCount": 6
+    },
+    {
+      "groupId": 2000860,
+      "groupName": "new_regis_08_85_ai_backup",
+      "totalEmojiCount": 16,
+      "distinctEmojiCount": 1
+    },
+    {
+      "groupId": 2000823,
+      "groupName": "new_regis_08_131_ai_backup",
+      "totalEmojiCount": 16,
+      "distinctEmojiCount": 1
+    },
+    {
+      "groupId": 2000869,
+      "groupName": "old_sleep_chat1_ai_backup",
+      "totalEmojiCount": 15,
+      "distinctEmojiCount": 5
+    },
+    {
+      "groupId": 2000535,
+      "groupName": "newgotlimit_09_03_ai_backup",
+      "totalEmojiCount": 9,
+      "distinctEmojiCount": 2
+    },
+    {
+      "groupId": 2000495,
+      "groupName": "old_9_general_06_ai_backup",
+      "totalEmojiCount": 9,
+      "distinctEmojiCount": 1
+    },
+    {
+      "groupId": 2000455,
+      "groupName": "old_9_general_01_ai_backup",
+      "totalEmojiCount": 9,
+      "distinctEmojiCount": 1
+    },
+    {
+      "groupId": 2000374,
+      "groupName": "yl_utility_0625_ai_backup",
+      "totalEmojiCount": 6,
+      "distinctEmojiCount": 3
+    },
+    {
+      "groupId": 2000444,
+      "groupName": "tm_new_09_gotlimit02_ai_backup",
+      "totalEmojiCount": 4,
+      "distinctEmojiCount": 4
+    },
+    {
+      "groupId": 2000443,
+      "groupName": "tm_new_09_gotlimit01_ai_backup",
+      "totalEmojiCount": 4,
+      "distinctEmojiCount": 4
+    },
+    {
+      "groupId": 2000553,
+      "groupName": "newgotlimit_09_mkt1_ai_backup",
+      "totalEmojiCount": 4,
+      "distinctEmojiCount": 3
+    },
+    {
+      "groupId": 2000417,
+      "groupName": "zlc_0917_online_test_ai_backup",
+      "totalEmojiCount": 4,
+      "distinctEmojiCount": 3
+    },
+    {
+      "groupId": 2000555,
+      "groupName": "newgotlimit_09_mkt2_ai_backup",
+      "totalEmojiCount": 3,
+      "distinctEmojiCount": 2
+    },
+    {
+      "groupId": 2000383,
+      "groupName": "old_increase_07_ai_backup",
+      "totalEmojiCount": 3,
+      "distinctEmojiCount": 1
+    },
+    {
+      "groupId": 2000703,
+      "groupName": "old_free7d_day_3type_01_ai_backup",
+      "totalEmojiCount": 3,
+      "distinctEmojiCount": 1
+    },
+    {
+      "groupId": 2000514,
+      "groupName": "newregis_09_11_ai_backup",
+      "totalEmojiCount": 3,
+      "distinctEmojiCount": 1
+    }
+  ],
+  "groups_with_ai_backup_suffix": 255,
+  "groups_without_ai_backup_suffix": 0,
+  "total_groups": 255,
+  "total_emoji_occurrences": 1281
+}

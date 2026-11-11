@@ -1,0 +1,342 @@
+[
+  {
+    "kind": "mysql",
+    "sql": "select id, name, source_type from message_material_group where source_type = 1 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, name, source_type from message_material_group where source_type = 1 and id < 2000775 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, name, source_type from message_material_group where source_type = 1 and id < 2000675 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, name, source_type from message_material_group where source_type = 1 and id < 2000573 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, name, source_type from message_material_group where source_type = 1 and id < 2000473 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, name, source_type from message_material_group where source_type = 1 and id < 2000377 order by id desc limit 50;",
+    "rows": 5
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1001600 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1001550 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1001500 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1001450 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1001400 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1001350 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1001300 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1001250 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1001200 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1001150 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1001100 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1001050 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1001000 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1000950 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1000900 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1000850 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1000800 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1000750 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1000700 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1000650 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1000600 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1000550 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1000500 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1000450 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1000400 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1000350 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1000300 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1000250 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1000200 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1000150 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1000100 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1000050 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1074 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 1024 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 974 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 924 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 874 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 824 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 774 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 724 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 674 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 624 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 574 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 524 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 474 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 424 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 374 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 324 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 274 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 224 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 174 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 124 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 74 order by id desc limit 50;",
+    "rows": 50
+  },
+  {
+    "kind": "mysql",
+    "sql": "select id, material_group_id, body_material_id from message_material_combination where 1=1 and id < 24 order by id desc limit 50;",
+    "rows": 23
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6ae412a5dc1dc3427a81bfdc'),Obj",
+    "rows": 50
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6ad9bf92a1eb8c0316876558'),Obj",
+    "rows": 50
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6ad1f5a6808437438c2a0c78'),Obj",
+    "rows": 50
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6acee550a02ac13c94213067'),Obj",
+    "rows": 50
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6ac84afc299ae33c8f40fd0f'),Obj",
+    "rows": 50
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6ab4887ef907512ef1e0c784'),Obj",
+    "rows": 50
+  },
+  {
+    "kind": "mongo",
+    "sql": "db.message_material.find({'_id':{'$in':[ObjectId('6aa7bc3308625a4b82521ee4'),Obj",
+    "rows": 25
+  }
+]
