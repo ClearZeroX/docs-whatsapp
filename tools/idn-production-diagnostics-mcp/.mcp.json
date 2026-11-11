@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "idn_production_diagnostics": {
+      "command": "python3",
+      "args": [
+        "server.py"
+      ],
+      "cwd": ".",
+      "enabled": true,
+      "enabled_tools": [
+        "idn_prod_query_logs",
+        "idn_prod_get_apollo_configs",
+        "idn_prod_get_schema",
+        "idn_prod_query_mysql",
+        "idn_prod_count_mysql",
+        "idn_prod_explain_mysql",
+        "idn_prod_query_mongo",
+        "idn_prod_count_mongo",
+        "idn_prod_explain_mongo"
+      ],
+      "startup_timeout_sec": 30,
+      "tool_timeout_sec": 120
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "profiles": {
+    "test-mysql": {
+      "type": "mysql",
+      "host": "127.0.0.1",
+      "port": 3306,
+      "database": "whatsapp_crm",
+      "user": "readonly_user",
+      "passwordEnv": "BUSINESS_DIAGNOSTIC_TEST_MYSQL_PASSWORD",
+      "blockedTables": [],
+      "sensitiveFields": [
+        "password",
+        "secret",
+        "token",
+        "phone",
+        "mobile",
+        "email",
+        "id_card",
+        "bank_card"
+      ]
+    },
+    "test-mongo": {
+      "type": "mongo",
+      "uriEnv": "BUSINESS_DIAGNOSTIC_TEST_MONGO_URI",
+      "database": "whatsapp_crm",
+      "blockedCollections": [],
+      "sensitiveFields": [
+        "phone",
+        "mobile",
+        "phoneNumber",
+        "email"
+      ]
+    }
+  },
+  "logDiagnostic": {
+    "defaultEnvironment": "idn-test",
+    "logTable": "test_log",
+    "services": {
+      "api": "whatsapp-crm-api",
+      "job": "whatsapp-crm-job",
+      "mq": "whatsapp-crm-mq",
+      "otp": "whatsapp-crm-otp"
+    },
+    "environments": {
+      "idn-test": {
+        "logTimeZone": "UTC",
+        "mysql": {
+          "host": "MOCK_IDN_TEST_HOST",
+          "port": 3306,
+          "database": "whatsapp_crm",
+          "user": "MOCK_READONLY_USER",
+          "passwordEnv": "LOG_DIAGNOSTIC_IDN_TEST_MYSQL_PASSWORD"
+        },
+        "apollo": {
+          "appId": "whatsapp-crm",
+          "meta": "https://config-ve-test.rupiahcepatweb.com",
+          "namespaces": [
+            "application",
+            "datasource.yml",
+            "rocketmq.yml",
+            "xxljob.yml",
+            "obs.yml",
+            "agent.yml",
+            "logging.properties",
+            "freemarker.properties",
+            "aviatorscript.properties",
+            "source.yml",
+            "rabbitmq.yml",
+            "okhttp",
+            "llm.yml",
+            "prompt.properties"
+          ],
+          "accessKeyEnv": "LOG_DIAGNOSTIC_IDN_TEST_APOLLO_ACCESS_KEY"
+        }
+      }
+    }
+  }
+}

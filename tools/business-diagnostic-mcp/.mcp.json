@@ -1,0 +1,30 @@
+{
+  "mcpServers": {
+    "business_diagnostic": {
+      "command": "bash",
+      "args": [
+        "scripts/run.sh"
+      ],
+      "cwd": ".",
+      "enabled": true,
+      "enabled_tools": [
+        "list_log_environments",
+        "query_logs",
+        "get_apollo_configs",
+        "list_profiles",
+        "get_schema",
+        "query_mysql",
+        "count_mysql",
+        "explain_mysql",
+        "query_mongo",
+        "count_mongo",
+        "explain_mongo"
+      ],
+      "env_vars": [
+        "BUSINESS_DIAGNOSTIC_CONFIG"
+      ],
+      "startup_timeout_sec": 60,
+      "tool_timeout_sec": 120
+    }
+  }
+}
