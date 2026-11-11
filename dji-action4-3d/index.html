@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="DJI Osmo Action 4 交互式 3D 拆解可视化 — Three.js 实时渲染，无需外部模型文件。" />
+  <meta name="theme-color" content="#05070a" />
+  <title>DJI Osmo Action 4 · 3D Teardown</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2305070a'/%3E%3Ccircle cx='32' cy='32' r='15' fill='none' stroke='%2358e6ff' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='5' fill='%2358e6ff'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="app">
+    <canvas id="webgl" aria-label="DJI Osmo Action 4 三维模型"></canvas>
+
+    <!-- 背景装饰层 -->
+    <div class="backdrop" aria-hidden="true">
+      <div class="backdrop__glow backdrop__glow--a"></div>
+      <div class="backdrop__glow backdrop__glow--b"></div>
+      <div class="backdrop__grid"></div>
+      <div class="backdrop__scan"></div>
+      <div class="backdrop__vignette"></div>
+    </div>
+
+    <!-- 标注连线层 -->
+    <div id="label-layer" aria-hidden="true">
+      <svg id="leader-svg"></svg>
+      <div id="labels"></div>
+    </div>
+
+    <!-- HUD -->
+    <div class="hud">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand__mark" aria-hidden="true">
+            <span class="brand__dji">DJI</span>
+            <span class="brand__sub">OSMO</span>
+          </div>
+          <div class="brand__divider"></div>
+          <div class="brand__copy">
+            <strong>OSMO ACTION 4</strong>
+            <span>3D TEARDOWN <i>/</i> 三维拆解可视化</span>
+          </div>
+        </div>
+
+        <div class="topbar__meta">
+          <div class="meta-chip meta-chip--live">
+            <span class="live-dot"></span>
+            <span>LIVE RENDER</span>
+          </div>
+          <div class="meta-chip">
+            <span class="meta-chip__label">PARTS</span>
+            <strong>13</strong>
+          </div>
+          <div class="meta-chip">
+            <span class="meta-chip__label">FPS</span>
+            <strong id="fps-value">60</strong>
+          </div>
+          <button class="icon-btn" id="btn-fullscreen" title="全屏 / Fullscreen" aria-label="切换全屏">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5" />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <aside class="panel panel--left" id="panel-left" aria-label="部件清单">
+        <div class="panel__head">
+          <div class="eyebrow"><span>01</span> PART INVENTORY</div>
+          <h2 class="panel__title">部件清单</h2>
+          <p class="panel__sub">点击任意部件，触发独立拆解动画</p>
+          <button class="panel__close" id="btn-close-left" aria-label="关闭部件清单面板">×</button>
+        </div>
+
+        <div class="part-list" id="part-list"></div>
+
+        <div class="panel__foot">
+          <button class="btn btn--primary" id="btn-explode">
+            <span class="btn__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                <path d="M12 3v6M12 15v6M3 12h6M15 12h6" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </span>
+            <span class="btn__text" id="explode-btn-text">拆解整机</span>
+            <kbd>E</kbd>
+          </button>
+          <button class="btn btn--ghost" id="btn-reset">
+            重置视角 <kbd>R</kbd>
+          </button>
+
+          <div class="switches">
+            <label class="switch">
+              <input type="checkbox" id="toggle-rotate" checked />
+              <span class="switch__track"><span class="switch__thumb"></span></span>
+              <span class="switch__label">自动旋转</span>
+            </label>
+            <label class="switch">
+              <input type="checkbox" id="toggle-labels" checked />
+              <span class="switch__track"><span class="switch__thumb"></span></span>
+              <span class="switch__label">部件标注</span>
+            </label>
+          </div>
+        </div>
+      </aside>
+
+      <aside class="panel panel--right" id="panel-right" aria-label="参数说明">
+        <div class="panel__head panel__head--right">
+          <div class="eyebrow"><span>02</span> SPECIFICATIONS</div>
+          <h2 class="panel__title">参数说明</h2>
+          <button class="panel__close" id="btn-close-right" aria-label="关闭参数面板">×</button>
+        </div>
+        <div class="spec-scroll" id="spec-content"></div>
+      </aside>
+
+      <footer class="bottombar">
+        <div class="meter">
+          <div class="meter__label">
+            <span class="meter__dot"></span>
+            <span id="mode-text">整机装配</span>
+            <em id="explode-percent">0%</em>
+          </div>
+          <div class="meter__track"><div class="meter__fill" id="meter-fill"></div></div>
+        </div>
+
+        <div class="hints" id="hints">
+          <span class="hint"><kbd>拖拽</kbd> 旋转</span>
+          <span class="hint"><kbd>滚轮</kbd> 缩放</span>
+          <span class="hint"><kbd>右键拖拽</kbd> 平移</span>
+          <span class="hint"><kbd>点击部件</kbd> 拆解</span>
+          <span class="hint"><kbd>Esc</kbd> 取消选中</span>
+        </div>
+
+        <div class="bottombar__actions">
+          <button class="chip-btn chip-btn--accent teardown-only" id="btn-assemble">一键组装</button>
+          <button class="chip-btn teardown-only" id="btn-reset-view">重置视角</button>
+          <button class="chip-btn" id="btn-open-left">部件清单</button>
+          <button class="chip-btn" id="btn-open-right">参数说明</button>
+        </div>
+      </footer>
+    </div>
+
+    <div id="toast" role="status" aria-live="polite"></div>
+
+    <!-- 悬停提示 -->
+    <div id="tooltip" role="status" aria-live="polite">
+      <span class="tooltip__name"></span>
+      <span class="tooltip__hint">点击拆解 · 查看参数</span>
+    </div>
+
+    <!-- 引导页 -->
+    <section class="overlay overlay--intro" id="onboarding" aria-label="交互引导">
+      <div class="intro-card">
+        <div class="intro-card__grid" aria-hidden="true"></div>
+        <div class="intro-card__top">
+          <span class="tag"><span class="tag__dot"></span> INTERACTIVE 3D TEARDOWN</span>
+          <span class="intro-card__code">NO.004 / ACTION</span>
+        </div>
+        <h1 class="intro-card__title">DJI <em>Osmo Action 4</em></h1>
+        <p class="intro-card__desc">拆开一台旗舰运动相机，<br />看看 1/1.3 英寸大底与 18 米防水机身如何构成。</p>
+
+        <div class="intro-features">
+          <article>
+            <span class="intro-features__no">01</span>
+            <strong>点击拆解</strong>
+            <p>点击任意部件，独立飞出并高亮</p>
+          </article>
+          <article>
+            <span class="intro-features__no">02</span>
+            <strong>自由视角</strong>
+            <p>拖拽旋转 / 滚轮缩放 / 右键平移</p>
+          </article>
+          <article>
+            <span class="intro-features__no">03</span>
+            <strong>部件参数</strong>
+            <p>13 个部件完整清单与规格说明</p>
+          </article>
+        </div>
+
+        <div class="intro-card__actions">
+          <button class="btn btn--primary btn--lg" id="btn-enter">
+            <span>开始探索</span>
+            <span class="btn__arrow" aria-hidden="true">→</span>
+          </button>
+          <span class="intro-card__note">全部几何体与贴图由代码生成</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 加载页 -->
+    <div class="loader" id="loader">
+      <div class="loader__mark">DJI</div>
+      <div class="loader__bar"><span id="loader-fill"></span></div>
+      <div class="loader__meta">
+        <span>INITIALIZING 3D SCENE</span>
+        <span id="loader-percent">0%</span>
+      </div>
+    </div>
+
+    <!-- WebGL 错误 -->
+    <div class="fatal" id="fatal" hidden>
+      <div class="fatal__box">
+        <span class="fatal__code">WEBGL ERROR</span>
+        <h2>无法初始化 3D 场景</h2>
+        <p id="fatal-message">当前浏览器或设备不支持 WebGL，请尝试更新浏览器或开启硬件加速。</p>
+        <button class="btn btn--primary" onclick="location.reload()">重新加载</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="vendor/three/build/three.min.js"></script>
+  <script src="vendor/three/examples/js/controls/OrbitControls.js"></script>
+  <script src="vendor/three/examples/js/geometries/RoundedBoxGeometry.js"></script>
+  <script src="vendor/three/examples/js/shaders/CopyShader.js"></script>
+  <script src="vendor/three/examples/js/shaders/LuminosityHighPassShader.js"></script>
+  <script src="vendor/three/examples/js/postprocessing/EffectComposer.js"></script>
+  <script src="vendor/three/examples/js/postprocessing/RenderPass.js"></script>
+  <script src="vendor/three/examples/js/postprocessing/ShaderPass.js"></script>
+  <script src="vendor/three/examples/js/postprocessing/UnrealBloomPass.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/model.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
