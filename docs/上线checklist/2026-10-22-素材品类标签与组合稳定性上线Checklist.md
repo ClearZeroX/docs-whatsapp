@@ -1,194 +1,275 @@
 # 素材品类、标签与组合稳定性上线 Checklist
 
-> 日期：2026-10-22
-> 功能：素材品类（普通素材）、标签来源与 AI 候选、组合品类校验、后端组合预览、组合维度稳定性评级
-> 参考分支：`feature/zlc/20261020-material-category`（本地未提交）
-> 说明：本 checklist 只覆盖**当前已实现的后端能力**；前端页面（内容管理、组合预览 UI、素材分类管理页等）不在本次发布范围，需后续独立发布。
+> 日期：2026-11-06
+> 参考分支：`feature/zlc/20261020-material-category`
 
----
+## 1. 数据库变更
 
-## 1. 影响范围
+### 1.1 测试环境旧方案结构复原
 
-### 1.1 发布内容
+仅测试环境执行。执行前确认本脚本对应的是此前已执行的旧方案 DDL。
 
-| # | 项 | 结论 |
-|---|---|---|
-| 1.1.1 | 发布模块 | `whatsapp-crm-data`、`whatsapp-crm-api`、`whatsapp-crm-job`、`whatsapp-crm-job2-1-1`（同一版本一起发布） |
-| 1.1.2 | 未包含模块 | 前端、`whatsapp-crm-mq`、`whatsapp-openplatform`、`whatsapp-crm-common` 本次无必要改动，`mq` 消费端只是复用 data 的 TagExtractService |
-| 1.1.3 | 基线约束 | 禁止把 `test3` / `origin/test3` 合入其他分支；合并出现冲突先停下分析再解决；发布前必须完成本仓库全量编译与聚焦测试 |
-| 1.1.4 | 本地验证证据 | 12 个聚焦测试类合并运行退出码 0；`data/api/job/job2-1-1` 串行编译通过；`git diff --check` 通过 |
+脚本文件：
 
-### 1.2 已实现能力（本轮后端）
-
-| # | 能力 | 说明 |
-|---|---|---|
-| 1.2.1 | 分类模型 | `category` 新增 `code`、`category_type`（TAG_ONLY/BUSINESS_MATERIAL）、`source_type`（0=AI/1=ADMIN/2=OPERATOR） |
-| 1.2.2 | 素材品类 | 普通 HEADER/BODY/FOOTER/BUTTONS 新建时写 Mongo 顶层 `materialCategoryCode`；**已落库素材编辑不修改**；LTO/轮播素材不写品类 |
-| 1.2.3 | AI 分类 code | AI 输出 `categoryName/categoryCode`；命中已有分类复用数据库 code；新分类语义化 code 后端校验后落库；存量分类上线前回填兼容 code |
-| 1.2.4 | 标签关系 | `tag.source_type`、`tag_relation.source_type/binding_status(0候选/1正式)/extract_log_id`；同素材同标签多来源多条保留，不建唯一约束；AI 重提只替换 AI 来源关系 |
-| 1.2.5 | 组合品类收口 | 普通 NORMAL 组合保存前统一收口：真实品类去重 ≤1，写入组合 `material_category_code` 快照；随机池预校验提前到 Mongo 写前；AI 备份组合继承主组合品类 |
-| 1.2.6 | 组合预览接口 | `POST /admin/api/material/combination/preview`：随机/人工（`manualCombinations`）候选、虚拟键、已存在在前新增在后、`typeSummary` 三类型摘要、memberFilter |
-| 1.2.7 | LTO 生成规则 | 无合格 IMAGE/VIDEO HEADER 时不生成 LTO 组合；正式生成与预览口径一致；LTO 组件合法性沿用既有校验 |
-| 1.2.8 | 组合稳定性评级 | 按组合维度复用 UTILITY 占比：非 ACTIVE 组合只计历史口径；Redis 缓存 `material_combination_stability:{id}`；`POST /material/combination/stability/batch`；刷新 Job 游标分页 |
-| 1.2.9 | 运营标签提交 | `MessageMaterialReqDTO.tagIds`；新建普通素材校验所选 tag 存在/启用/MATERIAL/与素材品类同分类，写营运来源关系 `source_type=2,binding_status=1,extract_log_id=0`，同一素材同一 tag 去重；编辑既有素材不新增营运关系 |
-| 1.2.10 | 品类必选强校验 | 新建 HEADER/BODY/FOOTER/BUTTONS 必填 `materialCategoryCode` 且命中启用 BUSINESS_MATERIAL 分类；既有素材、LTO、轮播 BODY 不要求、不改 |
-| 1.2.11 | 前端交互后端契约 | 新增 `GET /admin/api/material/category/list`（品类下拉）、`GET /material/ai/category/myWritePermission`（写权限查询）、`/material/combination/page` 支持 `materialId` 过滤 |
-
-### 1.3 未实现 / 本轮不交付（必须在发布前向业务确认）
-
-| # | 项 | 结论 |
-|---|---|---|
-| 1.3.1 | 前端页面发布 | 前端已由另一会话实现；上线时前后端需同场联调发布，后端契约已按 1.2.11 补齐 |
-| 1.3.2 | 停用组合稳定性口径 | 已按“非 ACTIVE 只计历史”实现（1.2.8），业务无异议即可 |
-| 1.3.3 | AI 提取一致性窗口 | “先成功日志、后替换关系”若关系写入失败，日志仍为成功：为 MySQL/Mongo 非同一事务风险，接受或后续补偿 |
-| 1.3.4 | 组合稳定性 service 循环引用 | `MessageMaterialCombinationServiceImpl` ↔ `MaterialCombinationStabilityStatsService`：Spring Boot 2.2.6 允许；升级 2.6+ 需改 `@Lazy` 或接口拆分 |
-
----
-
-## 2. 数据库变更
-
-### 2.1 DDL
-
-脚本：`doc/sql/2026-10-21-material-category-tag.sql`（仓库内为拟议脚本，**执行前必须与现网 DDL 核对列名/索引/字符集**）
+[2026-11-06-素材品类标签与组合稳定性旧方案结构复原.sql](./2026-11-06-素材品类标签与组合稳定性旧方案结构复原.sql)
 
 ```sql
+-- Revert the old material category and tag rollout structure.
 ALTER TABLE `category`
-  ADD COLUMN `code` varchar(64) NOT NULL DEFAULT '' COMMENT 'Stable lower snake-case category code' AFTER `name`,
-  ADD COLUMN `category_type` varchar(32) NOT NULL DEFAULT 'TAG_ONLY' COMMENT 'Category type: TAG_ONLY/BUSINESS_MATERIAL' AFTER `code`,
-  ADD COLUMN `source_type` tinyint(4) NOT NULL DEFAULT '0' COMMENT 'Source: 0=AI, 1=ADMIN, 2=OPERATOR' AFTER `category_type`;
+  DROP INDEX `uk_category_code`;
 
--- Unique index on category.code. Run ONLY after legacy rows have been backfilled
--- with non-empty unique codes (columns default to '').
-ALTER TABLE `category` ADD UNIQUE KEY `uk_category_code` (`code`);
+ALTER TABLE `category`
+  DROP COLUMN `code`,
+  DROP COLUMN `category_type`,
+  DROP COLUMN `source_type`;
 
 ALTER TABLE `tag`
-  ADD COLUMN `source_type` tinyint(4) NOT NULL DEFAULT '0' COMMENT 'Source: 0=AI, 1=ADMIN, 2=OPERATOR' AFTER `type`;
+  DROP COLUMN `source_type`;
 
 ALTER TABLE `tag_relation`
-  ADD COLUMN `source_type` tinyint(4) NOT NULL DEFAULT '0' COMMENT 'Source: 0=AI, 1=ADMIN, 2=OPERATOR' AFTER `tag_id`,
-  ADD COLUMN `binding_status` tinyint(4) NOT NULL DEFAULT '1' COMMENT 'Binding: 0=candidate, 1=formal' AFTER `source_type`,
-  ADD COLUMN `extract_log_id` bigint(20) NOT NULL DEFAULT '0' COMMENT 'Successful AI extraction log ID' AFTER `binding_status`,
-  ADD KEY `idx_entity_source` (`entity_type`, `entity_id`, `source_type`),
-  ADD KEY `idx_extract_log_id` (`extract_log_id`);
+  DROP INDEX `idx_entity_source`,
+  DROP INDEX `idx_extract_log_id`,
+  DROP COLUMN `source_type`,
+  DROP COLUMN `binding_status`,
+  DROP COLUMN `extract_log_id`;
 
 ALTER TABLE `message_material_combination`
-  ADD COLUMN `material_category_code` varchar(64) NOT NULL DEFAULT '' COMMENT 'Material category code snapshot' AFTER `material_template_type`,
-  ADD KEY `idx_material_category_code` (`material_category_code`);
+  DROP INDEX `idx_material_category_code`,
+  DROP COLUMN `material_category_code`;
 
--- Re-runnable daily aggregation for operator/AI category and label difference review.
+DROP TABLE IF EXISTS `material_category_tag_diff_stat`;
+```
+
+### 1.2 最新方案建表及字段
+
+执行环境：测试、预发、生产。执行时机：应用发布前。
+
+```sql
+CREATE TABLE `material_category` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary key',
+  `code` varchar(64) NOT NULL DEFAULT '' COMMENT 'Stable English material category code',
+  `name` varchar(128) NOT NULL DEFAULT '' COMMENT 'Chinese material category name',
+  `source_type` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0=AI, 1=admin, 2=operator',
+  `sort` int(11) NOT NULL DEFAULT '0' COMMENT 'Display order',
+  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '0=disabled, 1=enabled',
+  `create_time` bigint(20) NOT NULL DEFAULT '0' COMMENT 'Creation time',
+  `update_time` bigint(20) NOT NULL DEFAULT '0' COMMENT 'Update time',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_code` (`code`),
+  KEY `idx_status_sort` (`status`, `sort`),
+  KEY `idx_create_time` (`create_time`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Material category definition';
+
+CREATE TABLE `material_tag` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary key',
+  `code` varchar(64) NOT NULL DEFAULT '' COMMENT 'Stable English material tag code',
+  `name` varchar(128) NOT NULL DEFAULT '' COMMENT 'Chinese material tag name',
+  `ai_demo_level` varchar(16) NOT NULL DEFAULT '' COMMENT 'AI example level',
+  `source_type` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0=AI, 1=admin, 2=operator',
+  `sort` int(11) NOT NULL DEFAULT '0' COMMENT 'Display order',
+  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '0=disabled, 1=enabled',
+  `create_time` bigint(20) NOT NULL DEFAULT '0' COMMENT 'Creation time',
+  `update_time` bigint(20) NOT NULL DEFAULT '0' COMMENT 'Update time',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_code` (`code`),
+  UNIQUE KEY `uk_name` (`name`),
+  KEY `idx_status_sort` (`status`, `sort`),
+  KEY `idx_create_time` (`create_time`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Global material tag definition';
+
+CREATE TABLE `material_category_tag_relation` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary key',
+  `material_id` varchar(64) NOT NULL DEFAULT '' COMMENT 'Mongo message_material ID',
+  `material_category_code` varchar(64) NOT NULL DEFAULT '' COMMENT 'Category code carried by this relation',
+  `material_tag_code` varchar(64) NOT NULL DEFAULT '' COMMENT 'Material tag code',
+  `source_type` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0=AI, 1=admin, 2=operator',
+  `binding_status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '0=candidate, 1=formal',
+  `accuracy_score` tinyint(4) NOT NULL DEFAULT '5' COMMENT 'AI tag accuracy score, 1-5; default 5',
+  `extract_log_id` bigint(20) NOT NULL DEFAULT '0' COMMENT 'AI extract log ID; 0 for non-AI relations',
+  `create_time` bigint(20) NOT NULL DEFAULT '0' COMMENT 'Creation time',
+  `update_time` bigint(20) NOT NULL DEFAULT '0' COMMENT 'Update time',
+  PRIMARY KEY (`id`),
+  KEY `idx_material_category` (`material_id`, `material_category_code`),
+  KEY `idx_material_tag` (`material_id`, `material_tag_code`),
+  KEY `idx_category_tag` (`material_category_code`, `material_tag_code`),
+  KEY `idx_tag_code` (`material_tag_code`),
+  KEY `idx_source_status` (`source_type`, `binding_status`),
+  KEY `idx_extract_log_id` (`extract_log_id`),
+  KEY `idx_accuracy_score` (`accuracy_score`),
+  KEY `idx_create_time` (`create_time`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Material category tag relation';
+
+CREATE TABLE `material_tag_rule` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary key',
+  `name` varchar(128) NOT NULL DEFAULT '' COMMENT 'Rule name',
+  `material_category_code` varchar(64) NOT NULL DEFAULT '' COMMENT 'Material category code',
+  `prompt_desc` varchar(2048) NOT NULL DEFAULT '' COMMENT 'Rule prompt description',
+  `scope` varchar(64) NOT NULL DEFAULT '' COMMENT 'Applicable scope',
+  `is_required` tinyint(4) NOT NULL DEFAULT '0' COMMENT 'Whether the rule is required',
+  `sort` int(11) NOT NULL DEFAULT '0' COMMENT 'Display order',
+  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '0=disabled, 1=enabled',
+  `create_time` bigint(20) NOT NULL DEFAULT '0' COMMENT 'Creation time',
+  `update_time` bigint(20) NOT NULL DEFAULT '0' COMMENT 'Update time',
+  PRIMARY KEY (`id`),
+  KEY `idx_material_category` (`material_category_code`),
+  KEY `idx_status_sort` (`status`, `sort`),
+  KEY `idx_create_time` (`create_time`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Material tag extraction rule';
+
 CREATE TABLE `material_category_tag_diff_stat` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary key',
   `stat_date` varchar(10) NOT NULL DEFAULT '' COMMENT 'Analysis date yyyy-MM-dd',
-  `material_category_code` varchar(64) NOT NULL DEFAULT 'UNCATEGORIZED' COMMENT 'Material category code',
-  `ai_category_code` varchar(64) NOT NULL DEFAULT '' COMMENT 'AI category code',
-  `diff_type` varchar(32) NOT NULL DEFAULT '' COMMENT 'SAME_TAG, SAME_CATEGORY, CROSS_CATEGORY, AI_NEW_CATEGORY, LEGACY_UNCATEGORIZED',
-  `material_count` bigint(20) NOT NULL DEFAULT '0' COMMENT 'Affected material count in this dimension',
-  `relation_count` bigint(20) NOT NULL DEFAULT '0' COMMENT 'Raw tag relation count in this dimension',
+  `material_category_code` varchar(64) NOT NULL DEFAULT '' COMMENT 'Actual category code on the material',
+  `relation_category_code` varchar(64) NOT NULL DEFAULT '' COMMENT 'Category code carried by an AI tag relation',
+  `material_tag_code` varchar(64) NOT NULL DEFAULT '' COMMENT 'Material tag code; empty for category-only statistics',
+  `diff_type` varchar(32) NOT NULL DEFAULT '' COMMENT 'SAME_CATEGORY, CROSS_CATEGORY, SAME_TAG, LEGACY_UNCATEGORIZED',
+  `material_count` bigint(20) NOT NULL DEFAULT '0' COMMENT 'Affected material count',
+  `relation_count` bigint(20) NOT NULL DEFAULT '0' COMMENT 'Raw relation count',
   `sample_material_ids` text COMMENT 'Bounded JSON array of sample Mongo IDs',
   `create_time` bigint(20) NOT NULL DEFAULT '0' COMMENT 'Creation time',
   `update_time` bigint(20) NOT NULL DEFAULT '0' COMMENT 'Update time',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `uk_stat_category_diff` (`stat_date`,`material_category_code`,`ai_category_code`,`diff_type`),
+  UNIQUE KEY `uk_stat_category_tag_diff` (`stat_date`, `material_category_code`, `relation_category_code`, `material_tag_code`, `diff_type`),
+  KEY `idx_material_category` (`material_category_code`),
+  KEY `idx_relation_category` (`relation_category_code`),
   KEY `idx_create_time` (`create_time`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Daily material category vs AI tag difference statistics';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Material category tag difference statistics';
+
+ALTER TABLE `message_material_combination`
+  ADD COLUMN `material_category_code` varchar(64) NOT NULL DEFAULT '' COMMENT 'Material category code snapshot' AFTER `material_template_type`,
+  ADD KEY `idx_material_category_code` (`material_category_code`);
 ```
 
-### 2.2 执行顺序与数据准备
+Mongo `message_material` 增加顶层字段 `material_category_code`，无需执行 Mongo DDL。
 
-先执行顺序：`加列/加普通索引` → `回填 category.code`（全表 code 非空且无重复）→ `加 uk_category_code 唯一索引` → `建 material_category_tag_diff_stat 表` → 应用发布。
+## 2. Apollo 配置
 
-| # | 项 | 操作 |
-|---|---|---|
-| 2.2.1 | 历史分类 code 回填 | 建唯一索引前逐行生成 `AI_LEGACY_{id}`，须**先检查全表 code 非空且无重复**，再 `ALTER TABLE category ADD UNIQUE KEY uk_category_code (code)` |
-| 2.2.2 | 历史来源核对 | 新增列默认按 `0=AI` 处理；上线前需在真实库抽查是否确有“人工/其他来源”分类/标签/关系，若有需修正后再开启按来源删除的 AI 重提逻辑 |
-| 2.2.3 | 关系默认值 | `binding_status` 默认 `1`（正式），历史关系视为正式；AI 新写的跨品类候选显式写 `0` |
-| 2.2.4 | 执行时机 | 应用发布**前**；测试 → 预发 → 生产 |
-| 2.2.5 | DDL 回滚 | 不做 DDL 回滚；字段保留，旧代码不读取 |
+| # | Key | 默认值 | 建议值 | 本需求相关性与要求 |
+|---|---|---|---|---|
+| 2.1 | `material.category.write-whitelist` | 空 | 配置实际允许维护素材品类的 SSO 登录名，多个用户使用英文逗号分隔 | 素材品类管理写权限。读取不受白名单限制；本次需要配置 |
+| 2.2 | `material.ai.tag.system.prompt` | 空 | 发布最新 Prompt 内容 | AI 素材品类和标签提取 Prompt。本次需要更新，包含运营品类优先、已有品类选择、新品类创建、全局标签、`exampleTags: []` 及最新 code 规则 |
+| 2.3 | `material.group.stability.switch` | `false` | 沿用现网值；如本次需要启用组合稳定性能力则设为 `true` | 组合稳定性总开关。新版本读取组合稳定性时受该开关影响，本次需确认现网值 |
+| 2.4 | `material.group.stabilityRules` | 空；代码使用默认 D 级规则 | 沿用现网 S/A/B/C/D 规则 JSON；如现网未配置，补充正式规则 | 组合稳定性评级规则。本次组合维度稳定性依赖该配置，建议不要使用代码默认 D 级规则 |
+| 2.5 | `material.group.stability.redisSwitch` | `false` | 首次发布建议保持 `false`；确认 Redis 刷新 Job 正常后，再按发布安排设置为 `true` | Redis 稳定性缓存读取开关。只有启用 Redis 读取链路时才设置为 `true` |
+| 2.6 | `material.group.stability.redisRefreshDays` | `14` | `14` | Redis 稳定性缓存刷新范围，按最近 14 天更新的素材组合处理；无特殊要求时沿用默认值 |
+| 2.7 | `material.group.stability.redisCacheMinutes` | `35` | `35` | Redis 稳定性缓存 TTL，单位为分钟；无特殊要求时沿用默认值 |
+|  | material.tag.config.job.parameter |  |  | 配置导入 |
 
-> 说明：`material_category_tag_diff_stat` 为差异分析用的新表；由 `Job` 每日可重算写入，当前发布仅先建表，差异分析 Job 及其写入逻辑如与本次后端版本一并发布，则需同步验证该表可重复写入（重跑同一日期同一维度按唯一键覆盖）。
+```json
+你是专业营销文案标签与素材品类分析师，请根据提供的素材内容完成素材品类判断和业务特征标签提取。
 
-### 2.3 上线后数据校验
+请严格按照以下规则处理：
 
-```sql
--- 分类 code 非空且唯一（回填后、唯一索引建立后应为 0）
-SELECT COUNT(*) FROM category WHERE code = '' OR code IS NULL;
-SELECT COUNT(*) FROM (SELECT code FROM category GROUP BY code HAVING COUNT(*)>1) t;
+1、对每个素材独立分析其实际内容，判断素材所属的素材品类，并提取能够体现业务含义和素材差异的标签。
 
--- 普通组合快照不应残留空串（历史行默认 ''，见 2.4）
-SELECT COUNT(*) FROM message_material_combination
-WHERE material_template_type='NORMAL' AND material_category_code='';
+2、素材品类选择顺序：
+   a. 优先判断素材中的 materialCategoryCode，也就是运营绑定的素材品类是否符合当前素材内容；如果符合，继续使用该品类。
+   b. 如果运营绑定的素材品类不符合，从 materialCategoryList 中选择最匹配的已有素材品类。
+   c. 只有 materialCategoryList 中没有任何合适品类时，才允许新建素材品类。
+   d. 当 materialCategoryCode 为 UNCATEGORIZED 时，不使用该值作为最终品类，直接从 materialCategoryList 中选择；只有没有合适已有品类时才新建品类。
+   e. 已有素材品类能够匹配时，必须优先复用已有品类，不能随意新建品类。
+
+3、新建素材品类时，materialCategoryCode 必须满足以下规则：
+   - 以小写英文字母开头；
+   - 只包含小写英文字母、数字和横线；
+   - 长度不超过 64 个字符；
+   - 不包含下划线、冒号、大写字母、空格、中文或其他特殊字符；
+   - 不能使用 UNCATEGORIZED；
+   - 必须使用能够表达业务含义的英文名称，例如 limit-offer、repay-1-day。
+
+4、标签不依赖外部标签候选列表。标签必须直接根据素材内容生成，不要因为没有已有标签列表而返回空标签，也不要等待已有标签进行复用。
+
+5、标签必须体现素材明确的业务含义或素材之间的差异，不要提取没有明确业务含义的普通词语、语气词、表情或普通语法词。
+
+6、即使只有一个素材，也要根据该素材内容独立提取标签，不要求必须与其他素材进行比较。
+
+7、对于内容可读且包含明确业务特征的素材，每个素材返回 1 到 5 个有业务含义的标签。标签数量根据实际内容决定，不要为了凑数量生成无意义标签。
+
+8、对于素材内容为空、无法读取或图片识别结果为空的素材：
+   - 不要编造素材品类；
+   - 不要编造标签；
+   - tags 可以返回空数组。
+
+9、标签不归属于某个品类，标签应根据素材内容独立生成。materialCategoryCode 仅表示素材所属的素材品类。
+
+10、每个标签必须包含以下字段：
+   - tagCode：表达标签业务含义的英文 code；
+   - tagName：简洁准确的中文名称；
+   - confidence：0 到 1 之间的置信度。
+
+11、tagCode 必须满足以下规则：
+   - 以小写英文字母开头；
+   - 只允许小写英文字母、数字、横线和冒号；
+   - 长度不超过 64 个字符；
+   - 不允许下划线、大写字母、空格、中文或其他特殊字符；
+   - 必须符合正则：^[a-z][a-z0-9:-]{0,63}$；
+   - 示例：disguise-system:notice、realistic-credit-limit、ojk-licensed-platform。
+
+12、tagName 必须是简洁明确的中文展示名称，不要返回英文解释、长句或额外说明。
+
+13、tag Rule 中的规则是业务判断参考。只有素材内容符合规则的适用条件时，才执行对应规则；不符合时跳过该规则，不要将规则强行应用到所有素材。
+
+14、category item 中的 exampleTags 字段仅作为预留字段，必须保持为空数组。
+
+15、每个输入素材都应在 materials 中返回对应结果，material_id 必须使用输入素材的 materialId。
+
+16、必须严格返回纯 JSON：
+   - 不要返回 Markdown；
+   - 不要返回 ```json 代码块；
+   - 不要返回解释文字；
+   - 不要返回注释；
+   - 返回内容必须能够直接被 JSON 解析。
+
+17、返回格式必须为：
+
+{
+  "materials": [
+    {
+      "material_id": "Material ID",
+      "materialCategoryCode": "repay-1-day",
+      "materialCategoryName": "1天内还款",
+      "tags": [
+        {
+          "tagCode": "disguise-system:notice",
+          "tagName": "系统通知伪装",
+          "confidence": 0.95
+        }
+      ]
+    }
+  ]
+}
 ```
 
-### 2.4 存量数据影响
+## 3. XXL-Job
 
-- 历史普通素材 Mongo 无 `material_category_code`：读作 `UNCATEGORIZED`，不回填；
-- 历史组合 `material_category_code` 默认 `''`（SQL 默认值），读取/展示统一转 `UNCATEGORIZED`，不重算；
-- 历史 `tag/tag_relation/category` 来源默认 0=AI（依据 2.2.2 核对结论）。
+### 3.1 `whatsapp-crm-job`
 
----
-
-## 3. Apollo 配置
-
-| # | Key | 默认值 | 要求 |
-|---|---|---|---|
-| 3.1 | `material.category.write-whitelist` | 无（缺省全拒） | **上线前必须配置**：逗号分隔 SSO 登录名（`SsoUserVO#getName()`，不带 `@域名`）；空/未配置时分类写接口返回 `code=500, message=Category write permission denied`。修改后调 `GET /admin/api/material/ai/category/myWritePermission` 验证，未热生效需重启 api |
-| 3.2 | `material.group.stabilityRules` | 现有 | 组合稳定性复用组级稳定性规则与 Redis TTL/刷新天数；确认现网取值，组合缓存落在同一 Redis |
-| 3.3 | `material.ai.tag.system.prompt` 及提取开关 | 现有 | AI 输出格式已改为要求 `categoryCode`，需确认 Prompt 与开关现网状态；若开关关闭，不影响保存链路 |
-| 3.4 | `admin.whitelist` | 现有 | 不因本功能改动 |
-
-上线前检查：3.1 名单已配置；3.2/3.3 现网取值已记录。
-
----
-
-## 4. 上线顺序
-
-| 步骤 | 操作 | 完成判据 |
-|---|---|---|
-| 1 | 核对现网 DDL 与历史数据来源（2.2.1/2.2.2） | 无人工来源遗漏，code 回填方案确认 |
-| 2 | 测试环境：执行 DDL + 回填 code + 唯一索引 → 发布 `data/api/job/job2-1-1` | 分类读写、素材保存、AI 打标、预览、稳定性 batch 正常 |
-| 3 | 预发环境：同上 + 回归普通/人工/轮播/LTO 创建与编辑、AI 备用组 | 无跨品类组合生成；无“无头 LTO”组合新增 |
-| 4 | 生产环境：先执行 DDL 与回填（应用发布前） | `material_category_code` 等字段存在，唯一索引建立成功 |
-| 5 | 生产发布 `data/api/job/job2-1-1`（同版本） | 服务健康；`/material/combination/preview`、`/stability/batch` 可访问 |
-| 6 | 生产试点：新建含品类的普通素材模板 → 编辑 → 预览 → 保存 | 组合快照品类正确；预览与保存结果一致 |
-| 7 | 生产全量 + 按 §2.3 校验 | code 重复 0；普通组合快照留默认状况符合预期 |
-
----
-
-## 5. 监控告警
-
-| # | 类型 | 内容 | 判据/阈值 |
-|---|---|---|---|
-| 5.1 | 日志 | `material combination mixes multiple categories` | 出现即表示有跨品类组合请求被拒绝，量级应接近 0 |
-| 5.2 | 日志 | `Skip tag info with invalid category code` | AI 返回非法 code 被跳过，仅告警排查，不影响其余结果 |
-| 5.3 | 缓存 | `material_combination_stability:*` 命中/未命中 | 刷新 Job 分批正常，无单 key 大 value |
-| 5.4 | Job | `RefreshMaterialCombinationStabilityCacheJob` 失败重抛 | 任务失败能被 XXL-Job 标记 FAIL |
-| 5.5 | 权限 | 分类写接口 403 日志 | 白名单外用户写入被拒；名单外高频 403 需人工审视 |
-
-观察窗口：上线后至少观察 24 小时，覆盖一次稳定性刷新周期与一次 AI 提取周期。
-
----
-
-## 6. 回滚方案
-
-| 步骤 | 操作 |
+| Job Handler | 上线操作 |
 |---|---|
-| 1 | 暂停 `whatsapp-crm-job` / `whatsapp-crm-job2-1-1` 中组合稳定性刷新任务（避免回滚中继续写缓存） |
-| 2 | 回滚 `data/api/job/job2-1-1` 到上版本 |
-| 3 | **不回滚 DDL**：新增列与索引保留 |
-| 4 | 回滚后确认：旧分类管理写接口可用（旧代码不读白名单）；AI 提取旧口径兼容（新列默认值不影响） |
-| 5 | 恢复 job 调度 |
+| `RefreshMaterialCombinationStabilityCacheJob` | 注册或更新任务，配置执行器、Cron、负责人和失败告警 |
 
-回滚影响：已写入的品类快照/标签关系/缓存保留，旧版本不读取新列，无副作用；`/preview`、`/stability/batch` 随应用回滚消失。
+### 3.2 `whatsapp-crm-job2-1-1`
 
----
+| Job Handler | 上线操作 |
+|---|---|
+| `RefreshMaterialCombinationStabilityCacheJob` | 注册或更新任务，配置执行器、Cron、负责人和失败告警 |
 
-## 7. 结论确认
+本次不注册 `MaterialCategoryTagDiffJob`，因为当前没有对应实现。
 
-| # | 项 | 状态 |
-|---|---|---|
-| 7.1 | 发布范围（data/api/job/job2-1-1）确认 | ☐ |
-| 7.2 | 现网 DDL 核对 + code 回填 + 唯一索引方案确认 | ☐ |
-| 7.3 | `material.category.write-whitelist` 名单配置确认 | ☐ |
-| 7.4 | 前后端联调及归类管理写白名单确认 | ☐ |
-| 7.5 | 上线顺序与回滚演练 | ☐ |
-| 7.6 | 监控与 24h 观察窗口负责人 | ☐ |
+## 4. 服务发布顺序
+
+1. 执行第 1 节数据库 SQL。
+2. 发布 `whatsapp-crm-data`。
+3. 发布 `whatsapp-crm-api`、`whatsapp-crm-mq`。
+4. 发布 `whatsapp-crm-job`、`whatsapp-crm-job2-1-1`。
+5. 发布前端。
+6. 更新第 2 节 Apollo 配置。
+7. 注册或更新第 3 节 XXL-Job，并启用稳定性刷新任务。
+
+## 5. 回滚方案
+
+1. 停止 `RefreshMaterialCombinationStabilityCacheJob`。
+2. 回滚 `whatsapp-crm-job`、`whatsapp-crm-job2-1-1`。
+3. 回滚 `whatsapp-crm-api`、`whatsapp-crm-mq`、`whatsapp-crm-data` 和前端版本。
+4. 回滚本次修改的 Apollo 配置。
+5. 保留本次新增表、字段和已写入数据，不执行数据库结构删除。
