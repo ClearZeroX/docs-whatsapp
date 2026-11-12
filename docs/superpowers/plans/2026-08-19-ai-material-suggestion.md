@@ -346,7 +346,7 @@ public class AgentPromptConfig {
     private static final String KEY_USER_PROMPT_TEMPLATE = "ai_suggestion.user_prompt_template";
     private static final String KEY_HISTORY_SAMPLES = "ai_suggestion.history_samples";
 
-    @ApolloConfig("prompt")
+    @ApolloConfig("prompt.md")
     private Config config;
 
     @Getter

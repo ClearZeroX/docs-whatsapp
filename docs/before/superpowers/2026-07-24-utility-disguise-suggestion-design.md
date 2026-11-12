@@ -101,7 +101,7 @@ CREATE TABLE `message_template_disguise_suggestion`
   `material_combination_id`    bigint(20)   NOT NULL DEFAULT '0' COMMENT 'Associated material combination ID',
   `origin_content`             text         NOT NULL COMMENT 'Current template combination complete element collection JSON: {header:{material_id,element}, body:{...}, footer:{...}, buttons:{...}}',
   `suggested_content`          text         NOT NULL COMMENT 'LLM suggested JSON with same structure as origin, each element appends suggestion field',
-  `prompt`                     text         NOT NULL COMMENT 'Full prompt used when calling LLM (including system prompt + user prompt + tool output)',
+  `prompt`                     text         NOT NULL COMMENT 'Full prompt.md used when calling LLM (including system prompt.md + user prompt.md + tool output)',
   `llm_raw_output`             text         NOT NULL COMMENT 'LLM raw complete response (including chain of thought), preserving full analysis process',
   `feedbacks`                  text         NOT NULL COMMENT 'Per-element feedback JSON array, each item contains element_key/feedback_type/reason: [{"element_key":"body","feedback_type":1,"reason":"..."}]',
   `status`                     tinyint(4)   NOT NULL DEFAULT '0' COMMENT 'Reserved for future use',

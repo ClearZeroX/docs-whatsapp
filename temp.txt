@@ -1,0 +1,28 @@
+import os
+import re
+import certifi
+from pymongo import MongoClient
+
+uri = None
+path = os.path.expanduser('~/.business-diagnostic/env.sh')
+with open(path) as f:
+    for line in f:
+        m = re.match(r"\s*(?:export\s+)?BUSINESS_DIAGNOSTIC_TEST_MONGO_URI='([^']*)'", line)
+        if m:
+            uri = m.group(1)
+if not uri:
+    raise SystemExit('mongo uri not found')
+
+client = MongoClient(uri, serverSelectionTimeoutMS=8000)
+db = client.get_default_database()
+print('db', db.name)
+print('collections', sorted(db.list_collection_names())[:8])
+
+col = db['message_material']
+print('total docs (estimated)', col.estimated_document_count())
+
+doc = col.find_one(sort=[('_id', -1)])
+print('top-level keys:', sorted(doc.keys()))
+for k, v in doc.items():
+    s = repr(v)
+    print(' ', k, '=>', s[:160])

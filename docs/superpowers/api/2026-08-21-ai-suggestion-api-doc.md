@@ -543,7 +543,7 @@ CREATE TABLE `ai_material_suggestion` (
   `origin_content` text COMMENT 'user input material part content',
   `last_suggested_content` text COMMENT 'last AI generated content, empty on first generation',
   `suggested_content` text COMMENT 'AI suggested material part content',
-  `prompt` text COMMENT 'full prompt sent to LLM',
+  `prompt` text COMMENT 'full prompt.md sent to LLM',
   `rule_snapshot` text COMMENT 'used rules JSON snapshot for attribution',
   `llm_raw_output` text COMMENT 'LLM raw output',
   `score` decimal(3,2) DEFAULT NULL COMMENT 'LLM self score 0-5',
