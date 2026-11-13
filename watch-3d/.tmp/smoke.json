@@ -1,0 +1,4 @@
+[["eval","document.getElementById('btn-enter').click();'ok'"],
+ ["wait",3200],
+ ["eval","'parts='+__watch.parts.length+' spin='+(function(){var s=[];__watch.parts.forEach(function(p){p.group.traverse(function(o){if(o.userData&&o.userData.spinKind)s.push(p.id+':'+o.userData.spinKind);});});return s.join(',');})()+' h='+__watch.byId.hourHand.group.rotation.y.toFixed(3)+' m='+__watch.byId.minuteHand.group.rotation.y.toFixed(3)"],
+ ["shot","shots/final-assembled.png",null,1]]

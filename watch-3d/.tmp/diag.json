@@ -1,0 +1,8 @@
+[["wait", 800],
+ ["eval", "document.getElementById('onboarding').className"],
+ ["eval", "typeof window.WatchModel !== 'undefined'"],
+ ["eval", "document.querySelectorAll('canvas').length"],
+ ["eval", "document.getElementById('btn-enter').click(); 'clicked'"],
+ ["wait", 1800],
+ ["eval", "document.getElementById('onboarding').className"],
+ ["shot", "shots/first2.png", null, 1]]

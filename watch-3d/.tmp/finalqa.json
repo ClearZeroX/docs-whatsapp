@@ -1,0 +1,5 @@
+[["wait", 5600], ["shot", "shots/qa-assembled.png", null, 1],
+ ["eval","document.getElementById('btn-explode').click(); 'go'"], ["wait", 3400], ["shot", "shots/qa-exploded.png", null, 1],
+ ["move", "#webgl", 0.5, 0.45], ["wait", 500], ["shot", "shots/qa-hover.png", null, 1],
+ ["click", "#webgl", 0.5, 0.45], ["wait", 1500], ["shot", "shots/qa-select.png", null, 1],
+ ["key", "Escape"], ["wait", 400], ["key", "r"], ["wait", 1600], ["shot", "shots/qa-reset.png", null, 1]]

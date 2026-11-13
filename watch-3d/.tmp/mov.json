@@ -1,0 +1,1 @@
+[["eval","document.getElementById('btn-enter').click();'ok'"],["wait",2200],["eval","__watch.only('mainplate,rotor,barrel,train,escapeWheel,palletFork,balance,bridges,ratchet'); 'only'"],["shot","shots/mov-iso.png",null,1],["eval","__watch.all(); 'all'"],["shot","shots/mov-all.png",null,1]]

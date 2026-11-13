@@ -1,0 +1,5 @@
+[["wait", 4200],
+ ["move", "#webgl", 0.5, 0.42], ["wait", 500], ["shot", "shots/i-hover.png", null, 1],
+ ["click", "#webgl", 0.5, 0.42], ["wait", 1200], ["shot", "shots/i-select.png", null, 1],
+ ["key", "Escape"], ["wait", 600],
+ ["click", "#toggle-rotate", 0.2, 0.5], ["wait", 800], ["shot", "shots/i-rotate.png", null, 1]]

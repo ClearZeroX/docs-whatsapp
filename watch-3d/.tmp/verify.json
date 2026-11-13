@@ -1,0 +1,4 @@
+[["eval","document.getElementById('btn-enter').click();'ok'"],
+ ["wait",3200],
+ ["eval","location.href + ' | parts=' + __watch.parts.length"],
+ ["shot","shots/ext-verify-full.png",null,1]]

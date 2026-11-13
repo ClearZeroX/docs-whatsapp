@@ -1,0 +1,3 @@
+[["wait", 5600], ["shot", "shots/final-assembled2.png", null, 1],
+ ["eval","document.getElementById('btn-explode').click(); 'go'"], ["wait", 3400], ["shot", "shots/final-exploded2.png", null, 1],
+ ["eval","document.getElementById('btn-assemble').click(); 'back'"], ["wait", 2600], ["shot", "shots/final-assembled-back.png", null, 1]]

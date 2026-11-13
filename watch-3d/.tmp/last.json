@@ -1,0 +1,2 @@
+[["wait", 5200], ["eval","document.getElementById('loader').style.display='none'; 'hidden'"], ["shot", "shots/z-assembled-final.png", null, 1],
+ ["eval","document.getElementById('btn-explode').click(); 'go'"], ["wait", 3400], ["shot", "shots/z-exploded-final.png", null, 1]]

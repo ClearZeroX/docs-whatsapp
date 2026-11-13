@@ -1,0 +1,1 @@
+[["wait", 2400], ["eval","document.getElementById('loader').style.display='none'; 'hidden'"], ["shot", "shots/z-intro.png", null, 1]]

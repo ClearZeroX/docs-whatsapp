@@ -1,0 +1,6 @@
+[["eval","document.getElementById('btn-enter').click();'ok'"],
+ ["wait",3400],
+ ["shot","shots/verify-full.png",null,1],
+ ["eval","document.getElementById('btn-explode').click();'explode'"],
+ ["wait",2600],
+ ["shot","shots/verify-explode.png",null,1]]

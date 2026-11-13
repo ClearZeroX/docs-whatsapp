@@ -1,0 +1,1 @@
+[["click", "#btn-enter"], ["wait", 2500], ["shot", "shots/first.png", null, 1]]

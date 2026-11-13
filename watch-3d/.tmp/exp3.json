@@ -1,0 +1,1 @@
+[["wait", 4800], ["eval","document.getElementById('btn-explode').click(); 'go'"], ["wait", 3000], ["shot", "shots/exp3.png", null, 1]]

@@ -1,0 +1,4 @@
+[["wait", 5200],
+ ["eval","document.getElementById('btn-explode').click(); 'go'"], ["wait", 3000],
+ ["eval","__watch.only('caseback'); 'cb'"], ["wait", 300], ["shot", "shots/only-caseback.png", null, 1],
+ ["eval","__watch.only('rotor'); 'rot'"], ["wait", 300], ["shot", "shots/only-rotor.png", null, 1]]

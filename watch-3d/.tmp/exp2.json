@@ -1,0 +1,2 @@
+[["wait", 4800], ["eval","document.getElementById('btn-explode').click(); 'go'"], ["wait", 2800], ["shot", "shots/integ-exploded.png", null, 1],
+ ["eval","__watch.only('mainplate,rotor,barrel,train,escapeWheel,palletFork,balance,bridges,ratchet'); 'only'"], ["wait", 400], ["shot", "shots/integ-movement.png", null, 1]]

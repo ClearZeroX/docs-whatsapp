@@ -1,0 +1,7 @@
+[["eval","document.getElementById('btn-enter').click();'ok'"],
+ ["wait",3000],
+ ["eval","(function(){var ext=['crystal','bezel','secondHand','minuteHand','hourHand','indices','dial','case','caseback','crown'];var missing=ext.filter(function(id){return !__watch.byId[id];});var spins=[];__watch.parts.forEach(function(p){if(ext.indexOf(p.id)>=0)p.group.traverse(function(o){if(o.userData&&o.userData.spinKind)spins.push(p.id+'/'+o.name);});});return 'missing='+JSON.stringify(missing)+' spins='+spins.join(',')+' groups='+ext.length;})()"],
+ ["eval","__watch.byId.secondHand.group.children[0].rotation.y.toFixed(5)"],
+ ["wait",500],
+ ["eval","__watch.byId.secondHand.group.children[0].rotation.y.toFixed(5)"],
+ ["eval","(function(){var n=0,t=0;['crystal','bezel','secondHand','minuteHand','hourHand','indices','dial','case','caseback','crown'].forEach(function(id){__watch.byId[id].meshes.forEach(function(m){n++;var g=m.geometry;t+=(g.index?g.index.count:g.attributes.position.count)/3;});});return n+' meshes / '+Math.round(t)+' tris (exterior)';})()"]]

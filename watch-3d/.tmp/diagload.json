@@ -1,0 +1,4 @@
+[["wait", 3200],
+ ["eval","document.getElementById('loader').className + ' | opacity=' + getComputedStyle(document.getElementById('loader')).opacity + ' | vis=' + getComputedStyle(document.getElementById('loader')).visibility"],
+ ["eval","document.getElementById('onboarding').className"],
+ ["eval","document.querySelector('.loader__mark') ? document.querySelector('.loader__mark').textContent : 'none'"]]

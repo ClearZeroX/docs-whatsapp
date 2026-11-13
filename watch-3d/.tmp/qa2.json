@@ -1,0 +1,3 @@
+[["wait", 5200], ["eval","document.getElementById('loader').style.display='none'; 'hidden'"], ["shot", "shots/z-assembled.png", null, 1],
+ ["eval","document.getElementById('btn-explode').click(); 'go'"], ["wait", 3400], ["shot", "shots/z-exploded.png", null, 1],
+ ["click", "#webgl", 0.5, 0.4], ["wait", 1600], ["shot", "shots/z-selected.png", null, 1]]

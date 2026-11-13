@@ -1,0 +1,9 @@
+[["eval","document.getElementById('btn-enter').click();'ok'"],
+ ["wait",2200],
+ ["shot","shots/ext-full.png",null,1],
+ ["eval","__watch.only('case,caseback,bezel,crystal'); 'only'"],
+ ["wait",1200],
+ ["shot","shots/ext-case.png",null,1],
+ ["eval","__watch.only('dial,indices,hourHand,minuteHand,secondHand'); 'only-dial'"],
+ ["wait",300],
+ ["shot","shots/ext-dial.png",null,1]]

@@ -1,0 +1,10 @@
+[["eval","document.getElementById('btn-enter').click();'ok'"],
+ ["wait",3400],
+ ["shot","shots/final-full.png",null,1],
+ ["eval","__A4.skipIntro();__A4.camera.position.set(0.2,7.8,3.3);__A4.controls.target.set(0,0.18,0);__A4.controls.update();__watch.only('dial,indices,hourHand,minuteHand,secondHand');'dial'"],
+ ["wait",300],
+ ["shot","shots/final-dial.png",null,1],
+ ["eval","__watch.only('case,caseback,bezel,crystal,crown');__A4.camera.position.set(6.4,2.2,8.4);__A4.controls.target.set(0,0.10,0);__A4.controls.update();'case'"],
+ ["wait",300],
+ ["shot","shots/final-case.png",null,1],
+ ["eval","(function(){var n=0,t=0,verts=0;__watch.parts.forEach(function(p){p.meshes.forEach(function(m){n++;var g=m.geometry;t+=(g.index?g.index.count:g.attributes.position.count)/3;verts+=g.attributes.position.count;});});return n+' meshes / '+Math.round(t)+' tris';})()"]]

@@ -1,0 +1,1 @@
+[["eval","document.getElementById('btn-enter').click();'ok'"],["wait",2000],["eval","__watch.only('case'); 'only case'"],["shot","shots/only-case.png",null,1]]
