@@ -3,9 +3,9 @@
     "business_diagnostic": {
       "command": "bash",
       "args": [
-        "scripts/run.sh"
+        "/Users/opay-20260271/code-temp/ai-md/whatsapp_crm_docs/tools/business-diagnostic-mcp/scripts/run.sh"
       ],
-      "cwd": ".",
+      "cwd": "/Users/opay-20260271/code-temp/ai-md/whatsapp_crm_docs/tools/business-diagnostic-mcp",
       "enabled": true,
       "enabled_tools": [
         "list_log_environments",

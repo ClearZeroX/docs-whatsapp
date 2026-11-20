@@ -3,9 +3,9 @@
     "idn_production_diagnostics": {
       "command": "python3",
       "args": [
-        "server.py"
+        "/Users/opay-20260271/code-temp/ai-md/whatsapp_crm_docs/tools/idn-production-diagnostics-mcp/server.py"
       ],
-      "cwd": ".",
+      "cwd": "/Users/opay-20260271/code-temp/ai-md/whatsapp_crm_docs/tools/idn-production-diagnostics-mcp",
       "enabled": true,
       "enabled_tools": [
         "idn_prod_query_logs",
