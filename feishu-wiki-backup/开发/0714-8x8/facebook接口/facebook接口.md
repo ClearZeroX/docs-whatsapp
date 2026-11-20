@@ -1,0 +1,5 @@
+# facebook接口
+
+curl 'https://graph.facebook.com/v23.0/1294210848870849/message_templates?fields=name,status,quality_score' \\
+
+-H 'Authorization: Bearer EAALokXNZALsEBPc171fSJpZAkgL0eJFVbWHr98ygDioWuwkj6baQsZCtovp5HTXZCYL01jeWQurnpPBQeI2hYKG1lQ25uMsZCIAPZAXSsyNqWZAekOHo12k0zlpn5WxAuiGrS9V0UuVvnZAXBR0tZAICOZCoOWfWaXftQkcf2nLVZBB3cP3DZBOk6ngSGc2n7YJRb57ypgZDZD'
