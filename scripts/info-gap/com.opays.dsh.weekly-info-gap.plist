@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.opays.dsh.weekly-info-gap</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/python3</string>
+        <string>/Users/opay-20260271/code-temp/ai-md/whatsapp_crm_docs/scripts/info-gap/run.py</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>/Users/opay-20260271/code-temp/ai-md/whatsapp_crm_docs</string>
+    <!-- 按系统本地时区触发；安装时确认为 Asia/Shanghai。 -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Weekday</key><integer>5</integer>
+        <key>Hour</key><integer>18</integer>
+        <key>Minute</key><integer>45</integer>
+    </dict>
+    <key>RunAtLoad</key><false/>
+    <key>StandardOutPath</key>
+    <string>/Users/opay-20260271/code-temp/ai-md/whatsapp_crm_docs/news/info-gap/.logs/out.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/opay-20260271/code-temp/ai-md/whatsapp_crm_docs/news/info-gap/.logs/err.log</string>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key><string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        <key>LANG</key><string>zh_CN.UTF-8</string>
+        <key>TZ</key><string>Asia/Shanghai</string>
+        <key>PYTHONDONTWRITEBYTECODE</key><string>1</string>
+    </dict>
+</dict>
+</plist>

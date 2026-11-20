@@ -1,0 +1,15 @@
+# 信息差轻副业雷达专用覆盖层，不改变 App 或其他任务的默认模型。
+# provider 与凭据仍由 desktop profile 提供，不在仓库保存密钥。
+- id: agent-default-model
+  name: "@deepseek-ai/dsh-agent-default-model"
+  config:
+    provider: opay-gateway
+    model: deepseek-flash
+
+# headless 默认禁用的托管凭据条目，沿用现有任务配置。
+- id: credentials
+  disabled: false
+- id: authorization
+  disabled: false
+- id: deepseek-account
+  disabled: false
